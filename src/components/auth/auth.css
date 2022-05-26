@@ -1,0 +1,39 @@
+.LoginPage {position: fixed;background-color: var(--bgOne);height: 100%;width: 100%;}
+
+.loginMain {margin: 70px auto;border-radius: 20px;width: 90%;padding: 40px;background-color: var(--white);}
+
+.logo h3 {color: var(--primary);font-weight: bold;font-family: 'Roboto', sans-serif;}
+.logincontent .logo {margin-bottom: 30px;}
+
+.headContent h2 {font-size: 28px;font-family: 'Roboto', sans-serif;font-weight: 600;}
+
+.headContent p {font-size: 16px;font-family: 'Open Sams', sans-serif;color: var(--textBlack);opacity: 0.5;}
+
+ .form-group label {font-size: 18px;font-family: 'Roboto',sans-serif;display: block;}
+
+ .form-group input {outline: none;border: 1px solid var(--field-color);padding: 5px 10px;font-size: 16px;font-weight: 400;border-radius: 5px;font-family: 'Roboto',sans-serif;}
+
+.loginForm .form-group {margin-bottom: 10px;}
+
+.form-group .passlabel {display: flex;justify-content: space-between;}
+.logincontent .formContent {margin-right: auto;width: 70%;}
+
+ .form-group input[type="text"], .form-group input[type="Date"], .form-group input[type="password"] {width: 100%;}
+.form-group.rememberme {display: flex;align-items: center;gap: 10px;}
+
+.form-group.rememberme label {color: var(--para-color);font-size: 14px !important;font-weight: 500;}
+
+.passlabel a {color: var(--para-color);font-size: 14px;font-family: 'Roboto',sans-serif;font-weight: 500;text-decoration: none;}
+.loginsubmit a {
+    display: block;
+    background-color: var(--primary);
+    text-align: center;
+    padding: 16px;
+    font-size: 20px;
+    font-family: 'Roboto',sans-serif;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--white);
+}
+

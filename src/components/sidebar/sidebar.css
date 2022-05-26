@@ -1,0 +1,24 @@
+.sideBar {position: fixed;
+    width: 20%;
+    height: 100%;
+    background-color: var(--primary);}
+
+.sideBarLinks {margin-top: 65px;}
+
+.Logo h4 {text-align: center;font-size: 25px;font-family: 'Roboto',sans-serif;font-weight: 800;color: var(--white);margin-top: 30px;}
+
+.sideBarLinks a {display: block;}
+.sideBarLinks .menuLink a {color: var(--white); text-decoration: none;}
+
+.sideBarLinks .menuLink {display: flex;
+    padding: 9px 25px;
+    align-items: center;
+    justify-content: space-between;}
+.submenuLinks {background-color: var(--secondary);}
+
+.submenuLinks a {padding: 9px 55px;color: var(--submenu);display: flex;align-items: center;text-decoration: none;gap: 6px;}
+
+.sideBarLinks .menuLink a div {display: flex;align-items: center;gap: 6px;}
+.submenuLinks a:hover {color: var(--white);}
+
+.menuLink>div svg {color: var(--white);font-size: 24px;}

@@ -1,0 +1,15 @@
+:root{
+    --primary:#0060CC;
+    --textBlack:#232323;
+    --bgOne:#F3F3F3;
+    --secondary:#034B9C;
+    --white:#fff;
+    --bg-color: #E5E5E5;
+    --para-color:#6F6E6E;
+    --field-color:#D3D3D3;
+    --submenu:#B6B6B6;
+}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap');
+body{
+    background-color: var(--bg-color) !important;
+}

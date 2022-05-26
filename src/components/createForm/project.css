@@ -1,0 +1,25 @@
+.ProjectForm {margin-left: 20%;}
+
+.formcontent {margin: auto;
+    padding-top: 120px;
+    width: 530px;}
+.formcontent .formDiv {background-color: var(--white);padding: 22px;border-radius: 5px;}
+
+.formDiv .formHead {display: flex;align-items: center;gap: 7px;}
+
+.formDiv .formHead h4 {margin: 0px;}
+
+.formDiv .formHead svg {font-size: 24px;}
+
+form.createProject {margin-top: 40px;}
+.ProjectForm .form-group label {display: block;}
+
+form.createProject .form-group {margin-bottom: 10px;}
+.form-submit a {font-size: 20px;display: block;text-align: center;padding: 12px;background-color: var(--primary);border-radius: 5px;text-decoration: none;font-weight: 600;color: var(--white);font-family: 'Roboto',sans-serif;}
+
+form.createProject .form-group select {width: 100%;padding: 10px 10px;font-size: 16px;
+    font-weight: 400;
+    border: 1px solid var(--field-color);border-radius: 5px;
+    outline: none;font-family: 'Roboto',sans-serif;background-color: var(--white);}
+    form.createProject .form-submit {margin-top: 40px;}
+    form.createProject .form-submit a:hover {color: var(--white);}
