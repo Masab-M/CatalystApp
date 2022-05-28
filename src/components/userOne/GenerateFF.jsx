@@ -3,8 +3,9 @@ import { Table } from 'react-bootstrap'
 import DashNav from '../Dashboard/DashNav'
 import './rvProject.css'
 import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'
-import InfoDropDown from './InfoDropDown'
+import GnrtFF from './template/GnrtFF'
 export default function GenerateFF() {
+  const isGnrt=false;
   return (
     <>
     <DashNav srch={true}/>
@@ -27,15 +28,20 @@ export default function GenerateFF() {
                             <td>Otto</td>
                             <td>@mdo</td>
                             <td>@mdo</td>
-                            <td className='prjctactn'>
-                                <InfoDropDown />
+                            <td className='gnrtff'>
+                            <GnrtFF gnrt={false}/>
+                              
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td className='gnrtff'>
+                            <GnrtFF gnrt={true}/>
 
-                                <div className="editProject">
-                                    <AiOutlineEdit />
-                                </div>
-                                <div className="dltProject">
-                                    <AiOutlineDelete />
-                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -44,30 +50,8 @@ export default function GenerateFF() {
                             <td>Otto</td>
                             <td>@mdo</td>
                             <td>@mdo</td>
-                            <td className='prjctactn'>
-                                <InfoDropDown />
-                                <div className="editProject">
-                                    <AiOutlineEdit />
-                                </div>
-                                <div className="dltProject">
-                                    <AiOutlineDelete />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td className='prjctactn'>
-                                <InfoDropDown />
-                                <div className="editProject">
-                                    <AiOutlineEdit />
-                                </div>
-                                <div className="dltProject">
-                                    <AiOutlineDelete />
-                                </div>
+                            <td className='gnrtff'>
+                              <GnrtFF gnrt={false}/>
                             </td>
                         </tr>
                     </tbody>

@@ -36,3 +36,17 @@ td.prjctactn .dltProject svg {color: red;}
 .prjctLinks ul.links li {list-style: none;padding: 10px 15px;border-bottom: 1px solid #D7D7D7;}
 
 .prjctLinks ul.links li a {text-decoration: none;color: #747474;font-family: 'Roboto',sans-serif;font-size: 18px;font-weight: 500;}
+
+.viewBtn {
+    font-size: 16px;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--white);
+    background-color: var(--primary);
+    padding: 7px 7px;
+    border-radius: 5px;
+  }
+.viewBtn:hover {
+    color: var(--white);
+}

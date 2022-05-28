@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap'
 import DashNav from '../Dashboard/DashNav'
 import './rvProject.css'
 import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'
-import InfoDropDown from './InfoDropDown'
+import InfoDropDown from './template/InfoDropDown'
 
 export default function ReviewProject() {
 
