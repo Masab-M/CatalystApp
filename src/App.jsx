@@ -6,11 +6,13 @@ import CreateProject from "./view/userOne/Dashboard";
 import Home from "./view/userOne/Home";
 import GenerateFF from "./components/userOne/GenerateFF";
 import ViewFF from "./components/userOne/ViewFF";
+import Links from "./components/Links";
 function App() {
 
   return (
     <>
       <Routes>
+        <Route path="" element={<Links />} />
         <Route path="userOne" element={<Home />} />
         <Route path="userOne/login" element={<Login />} />
         <Route path="userOne/dashBoard" element={<CreateProject />}>

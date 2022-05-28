@@ -1,6 +1,7 @@
 import React from 'react'
 import DashNav from '../Dashboard/DashNav'
 import { Table } from 'react-bootstrap'
+import InfoDropDown from './InfoDropDown';
 export default function GenerateFF() {
   return (
     <>
