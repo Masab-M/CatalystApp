@@ -7,14 +7,14 @@ const submenu = ({ item }) => {
     const showSubnav = () => setSubnav(!subnav);
     return (
         <>
-            <div className="menuLink">
-                <Link to={item.path}>
+            <div className="menuLink" onClick={item.subNav && showSubnav}>
+                <Link to={item.subNav ?"": item.path}>
                     <div>
                         {item.icon}
                         <label htmlFor="">{item.title}</label>
                     </div>
                 </Link>
-                <div onClick={item.subNav && showSubnav}>
+                <div >
                     {item.subNav && subnav? item.iconOpened: item.subNav? item.iconClosed: null}
                 </div>
             </div>
