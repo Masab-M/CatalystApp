@@ -5,7 +5,7 @@ import DashNav from '../Dashboard/DashNav'
 function createProject() {
   return (
     <>
-    <DashNav/>
+    <DashNav srch={false} />
     <Project/>
     </>
   )

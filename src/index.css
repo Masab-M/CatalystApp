@@ -13,3 +13,6 @@
 body{
     background-color: var(--bg-color) !important;
 }
+.mainContent{
+margin-left: 20%;
+}

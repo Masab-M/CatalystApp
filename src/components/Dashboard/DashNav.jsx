@@ -4,24 +4,18 @@ import {CgArrowLongRight} from 'react-icons/cg';
 import {MdEmail} from 'react-icons/md'
 import {FaBell} from 'react-icons/fa'
 import {BsFillCaretDownFill} from 'react-icons/bs'
+import {BiSearch} from 'react-icons/bi'
 import './DashNav.css'
-export default function DashNav() {
+export default function DashNav(props) {
+    const isSrch=props.srch;
   return (
     <div className='DashNav'>
     <Container fluid>
     <Row>
-        <Col xs={6}>
-            <div className="BranchDet">
-                <span className="type">
-                    Project
-                </span>
-                <CgArrowLongRight/>
-                <span className="BranchName">
-                Zong Kohat City
-                </span>
-            </div>
+        <Col xs={8}>
+           { isSrch ? <Search/> :<BranchDet/> }
         </Col>
-        <Col xs={6}>
+        <Col xs={4}>
             <div className="userSC">
                 <div className="mails">
                 <MdEmail/>    
@@ -42,3 +36,31 @@ export default function DashNav() {
     </div>
   )
 }
+
+function BranchDet() {
+    return <div className="BranchDet">
+    <span className="type">
+        Project
+    </span>
+    <CgArrowLongRight/>
+    <span className="BranchName">
+    Zong Kohat City
+    </span>
+</div>;
+  }
+  
+  function Search() {
+    return <div className='SearchProjects'>
+        <form action="" className="srchP">
+            <div className="form-group">
+                <div className="iconField">
+                    <input type="text" name="" id="" placeholder='Search' />
+                    <BiSearch/>
+                </div>
+                <a href="#" className="srchBtn">
+                    <BiSearch/>
+                </a>
+            </div>
+        </form>
+    </div>;
+  }

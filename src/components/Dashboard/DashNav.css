@@ -14,3 +14,18 @@
 .userLinks .usrImg img {border-radius: 100px;width: 40px;height: 40px;}
 
 .userLinks .usrImg {display: flex;align-items: center;gap: 8px;}
+.iconField svg {position: absolute;left: 10px;top: 10px;}
+
+.iconField {    position: relative;
+    width: inherit;}
+
+.iconField input {padding-left: 30px;}
+
+.srchP .form-group {display: flex;align-items: center; width: inherit;}
+
+.srchP .form-group a {position: relative;padding: 6px 12px 5px 12px;background-color: var(--primary);border-radius: 0px 5px 5px 0px;color: var(--white);}
+
+form.srchP {padding: 10px;
+    width: 100%;}
+    form.srchP .form-group input {border-radius: 5px 0px 0px 5px;background-color: var(--bg-color);border-color: var(--bg-color);}
+    .srchP .form-group a svg {font-size: 20px;}

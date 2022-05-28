@@ -8,7 +8,7 @@ import {BsListCheck} from 'react-icons/bs'
 export const SidebarData= [
   {
     title: "DashBoard",
-    path: "/Dashboard",
+    path: "/userOne/dashBoard",
     icon: <BsGrid1X2 />,
     iconClosed: <MdOutlineKeyboardArrowDown />,
     iconOpened: <MdOutlineKeyboardArrowUp />,
@@ -23,17 +23,17 @@ export const SidebarData= [
     subNav: [
       {
         title: "Create Project",
-        path: "/userOne/55/ff/create",
+        path: "Project/create",
         icon: <AiOutlineFolderAdd />,
       },
       {
         title: "Review Projects",
-        path: "ff/review",
+        path: "Project/review",
         icon: <AiOutlineEye/>,
       },
       {
         title: "Generate FF",
-        path: "ff/print",
+        path: "ff/generate",
         icon: <FaRegFolder/>,
       },
       {

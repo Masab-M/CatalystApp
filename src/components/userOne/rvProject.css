@@ -1,0 +1,38 @@
+.viewProject {    padding: 120px 25px 0px 25px;}
+table.reviewProjects tbody {border-top-width: 0px !important;}
+
+table.reviewProjects thead {color: var(--white);font-size: 18px;font-family: 'Roboto',sans-serif;border-radius: 5px;font-weight: 500;}
+
+table.reviewProjects thead th {padding: 9px 17px;
+    background-color: var(--primary);}
+    table.reviewProjects thead tr th:first-child,table.reviewProjects tbody tr td:first-child {border-radius: 5px 0px 0px 5px;}
+
+table.reviewProjects thead tr th:last-child, table.reviewProjects tbody tr td:last-child {border-radius: 0px 5px 5px 0px;}
+
+table.reviewProjects tbody td {   
+     background-color: var(--white);
+    font-size: 18px;
+    color: #575757;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 500;
+}
+
+
+table.reviewProjects {border-spacing: 0px 8px;
+    border-collapse: separate;}
+    td.prjctactn {display: flex;align-items: center;justify-content: space-between;}
+
+td.prjctactn svg {font-size: 18px;}
+
+td.prjctactn .editProject,td.prjctactn .dltProject {padding: 2px 6px;border: 1px solid var(--field-color);border-radius: 50px;}
+
+td.prjctactn .dltProject svg {color: red;}
+.prjctLinks {z-index: 9;position: fixed;}
+
+.projectInfo {position: relative;}
+
+.prjctLinks ul.links {top: 14px;padding: 0px;position: absolute;left: -160px;background-color: #f1f1f1;border-radius: 5px;width: 251px;}
+
+.prjctLinks ul.links li {list-style: none;padding: 10px 15px;border-bottom: 1px solid #D7D7D7;}
+
+.prjctLinks ul.links li a {text-decoration: none;color: #747474;font-family: 'Roboto',sans-serif;font-size: 18px;font-weight: 500;}

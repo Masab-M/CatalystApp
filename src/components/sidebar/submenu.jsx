@@ -15,11 +15,7 @@ const submenu = ({ item }) => {
                     </div>
                 </Link>
                 <div onClick={item.subNav && showSubnav}>
-                    {item.subNav && subnav
-                        ? item.iconOpened
-                        : item.subNav
-                            ? item.iconClosed
-                            : null}
+                    {item.subNav && subnav? item.iconOpened: item.subNav? item.iconClosed: null}
                 </div>
             </div>
             <div className="submenuLinks">
