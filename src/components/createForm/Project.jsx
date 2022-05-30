@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Container,Row } from 'react-bootstrap'
 import {FiArrowLeft} from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import './project.css'
 function Project() {
   return (
@@ -53,7 +54,7 @@ function Project() {
                                   </select>
                               </div>
                               <div className="form-submit">
-                                  <a href="#">Next</a>
+                                  <Link to="/userOne/dashBoard/Project/assumption">Next</Link>
                               </div>
                           </form>
                       </Col>

@@ -7,6 +7,9 @@ import Home from "./view/userOne/Home";
 import GenerateFF from "./components/userOne/GenerateFF";
 import ViewFF from "./components/userOne/ViewFF";
 import Links from "./components/Links";
+import Assumption from "./components/userOne/create/Assumption";
+import Upload from "./components/userOne/create/upload";
+import Import from "./components/userOne/create/Import";
 function App() {
 
   return (
@@ -17,6 +20,11 @@ function App() {
         <Route path="userOne/login" element={<Login />} />
         <Route path="userOne/dashBoard" element={<CreateProject />}>
           <Route path="Project/create" element={<CreateProjectComponent />} />
+          <Route path="Project/assumption" element={ <Assumption /> } >
+            <Route path="" element={<Upload />}/>
+            <Route path="upload" element={ <Upload/> }/>
+            <Route path='import' element={<Import/>}/>
+          </Route>
           <Route path="Project/review" element={<ReviewProject/>} />
           <Route path="ff/generate" element={ <GenerateFF/> } />
           <Route path="ff/view" element={ <ViewFF/> } />

@@ -1,4 +1,4 @@
-.viewProject {    padding: 120px 25px 0px 25px;}
+.viewProject {    padding:60px 25px 0px 25px;}
 table.reviewProjects tbody {border-top-width: 0px !important;}
 
 table.reviewProjects thead {color: var(--white);font-size: 18px;font-family: 'Roboto',sans-serif;border-radius: 5px;font-weight: 500;}
