@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import Login from './view/userOne/login'
-import CreateProjectComponent from "./components/userOne/CreateProject";
+import CreateProjectComponent from "./components/userOne/create/CreateProject";
 import ReviewProject from "./components/userOne/ReviewProject";
 import CreateProject from "./view/userOne/Dashboard";
 import Home from "./view/userOne/Home";
