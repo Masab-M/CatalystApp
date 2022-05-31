@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import {NavLink, Outlet } from 'react-router-dom'
 import DashNav from '../../Dashboard/DashNav'
 
 export default function Assumption() {
@@ -7,7 +7,8 @@ export default function Assumption() {
     <>
     <DashNav srch={false} />
     <div className="assumpLinks">
-        <NavLink to='upload'>Upload </NavLink>
+        <NavLink  className='linkAssump' to='upload'>UPLOAD ASSUMPTION FILES</NavLink>
+        <NavLink  className='linkAssump' to='import'>IMPORT ASSUMPTIONS FROM</NavLink>
     </div>
     <Outlet/>
     </>
