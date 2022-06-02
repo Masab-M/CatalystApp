@@ -4,7 +4,7 @@ cd  CatalystApp __
 #For install Packages __
 npm install __
 #For Live on local  __
-npm run dev  __
+npm run dev 
 
 for more Contact __
 #Brandora Agency __
