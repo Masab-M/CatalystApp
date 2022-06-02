@@ -1,9 +1,15 @@
 import React from 'react'
 import { Col, Container,Row } from 'react-bootstrap'
 import {FiArrowLeft} from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './project.css'
-function Project() {
+
+export default function Project() {
+    let navigate = useNavigate();
+    const hello = (event) =>{
+        event.preventDefault();
+        navigate("/userOne/dashBoard/Project/assumption/upload", { replace: true });
+    };
   return (
       <div className="ProjectForm">
           <div className="formcontent">
@@ -14,7 +20,7 @@ function Project() {
                               <FiArrowLeft/>
                               <h4>Create Project</h4>
                           </div>
-                          <form action="" className='createProject'>
+                          <form action="" onSubmit={hello} className='createProject'>
                               <div className="form-group">
                                   <label htmlFor="pName">
                                   Project Name
@@ -54,7 +60,7 @@ function Project() {
                                   </select>
                               </div>
                               <div className="form-submit">
-                                  <Link to="/userOne/dashBoard/Project/assumption">Next</Link>
+                                  <button type='submit'>Next</button>
                               </div>
                           </form>
                       </Col>
@@ -65,4 +71,3 @@ function Project() {
   )
 }
 
-export default Project

@@ -14,7 +14,18 @@ form.createProject {margin-top: 40px;}
 .ProjectForm .form-group label {display: block;}
 
 form.createProject .form-group {margin-bottom: 10px;}
-.form-submit a {font-size: 20px;display: block;text-align: center;padding: 12px;background-color: var(--primary);border-radius: 5px;text-decoration: none;font-weight: 600;color: var(--white);font-family: 'Roboto',sans-serif;}
+.form-submit button{    font-size: 20px;
+    display: block;
+    border: none;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    background-color: var(--primary);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--white);
+    font-family: 'Roboto',sans-serif;}
 
 form.createProject .form-group select {width: 100%;padding: 10px 10px;font-size: 16px;
     font-weight: 400;

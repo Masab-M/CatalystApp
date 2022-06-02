@@ -1,0 +1,118 @@
+.assumpLinks {
+    background-color: var(--white);
+    padding: 0px 45px;
+    display: flex;
+    gap: 45px;
+  }
+  .assumpLinks a {
+    padding: 10px 2px;
+    display: block;
+  }
+  .assumpLinks a.active {
+    border-bottom: 5px solid var(--primary);
+  }
+  .assumpLinks a {
+    text-decoration: none;
+    color: var(--textBlack);
+    font-family: 'Roboto',sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .assumpLinks a:hover {color: var(--textBlack);}
+
+.projectAssump {padding: 20px 15px;background-color: var(--white);border-radius: 10px;}
+
+.projectAssump .col-12 {padding: 0px;}
+
+.headText h3 {color: var(--textBlack);font-size: 24px;font-family: 'Roboto',sans-serif;font-weight: 500;}
+
+form.assumptions {margin-top: 22px;}
+.projectDiv {padding: 20px 25px;}
+.linkDiv {padding: 25px 25px 0px 25px;}
+form.assumptions .form-group {margin-bottom: 15px;}
+
+.uploadField input {display: none;}
+
+.uploadField {display: flex;
+    gap: 10px;}
+
+.uploadField button,.uploadField label {padding: 6px 20px;
+    border-radius: 5px;
+    background: none;
+    font-size: 16px;}
+
+.uploadField button {color: var(--white);background-color: var(--primary);border: none;}
+
+.uploadField label {border: 1px solid var(--field-color);}
+.fileName {width: 100%;border-radius: 5px;border: 1px solid var(--field-color);}
+.form-group textarea {outline: none;
+    border: 1px solid var(--field-color);
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%;border-radius: 5px;
+    font-family: 'Roboto',sans-serif;}
+
+.actbtn {display: flex;justify-content: space-between;}
+
+.actbtn a {    font-family: 'Roboto',sans-serif;
+    font-size: 20px;
+    padding: 9px 15px;
+    background-color: var(--primary);
+    font-weight: 600;
+    font-style: normal;
+    border-radius: 5px;
+    color: var(--white);
+    text-decoration: none;}
+.actbtn a:hover {color: var(--white);}
+
+.AssumpDiv {
+  padding: 15px 25px;
+}
+.Assumptions {
+  background-color: var(--white);
+  padding: 30px 20px;
+  border-radius: 5px;
+}
+.singleAssump {
+  border: 2px solid var(--primary);
+  padding: 8px;
+  border-radius: 5px;
+  position: relative;
+}
+.singleAssump span {
+  font-family: 'Roboto',sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  color: #000;
+}
+span.asumpid {border-right: 2px solid var(--primary);padding-right: 7px;}
+
+span.nAssump {padding-left: 7px;}
+.singleAssump svg {width: 30px;position: absolute;top: -16px;height: 30px;padding: 4px;background-color: var(--primary);border-radius: 50px;color: var(--white);right: -14px;}
+
+
+.adetDiv {padding: 15px 25px;}
+
+.assumpDet {background-color: var(--white);padding: 20px;border-radius: 5px;}
+
+.assumpDet .headText h3 {margin: 20px auto;}
+
+.insrt {display: flex;gap: 10px;justify-content: flex-end;align-items: center;}
+
+.insrt button {font-weight: 400;padding: 12px  14px;font-size: 16px;color: var(--white);background-color: var(--primary);border: none;border-radius: 5px;}
+td.adetactn {gap: 10px;display: flex;align-items: center;}
+
+td.adetactn .edtdet svg, td.adetactn .dltdet svg {border-radius: 50px;border: 1px solid var(--field-color);padding: 8px 3px;font-size: 32px;}
+td {font-size: 14px;}
+
+.assumpDet table th,.assumpDet table td {text-align: center;border: 1px solid var(--field-color);font-size: 14px;}
+
+tbody {border-top: none !important;}
+
+td.adetactn .edtdet svg {color: #000;}
+
+td.adetactn svg {}
+
+td.adetactn .dltdet svg {color: #FF5858;}

@@ -4,6 +4,7 @@ import {AiOutlineEdit} from 'react-icons/ai'
 export default function Assump() {
   return (
     <>
+    <div className="AssumpDiv">
     <div className="Assumptions">
         <div className="headText">
             <h3>Assumptions</h3>
@@ -34,6 +35,8 @@ export default function Assump() {
         </Row>
         </Container>
     </div>
+    </div>
+
     </>
   )
 }
