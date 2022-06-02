@@ -92,7 +92,6 @@ span.asumpid {border-right: 2px solid var(--primary);padding-right: 7px;}
 span.nAssump {padding-left: 7px;}
 .singleAssump svg {width: 30px;position: absolute;top: -16px;height: 30px;padding: 4px;background-color: var(--primary);border-radius: 50px;color: var(--white);right: -14px;}
 
-
 .adetDiv {padding: 15px 25px;}
 
 .assumpDet {background-color: var(--white);padding: 20px;border-radius: 5px;}
@@ -102,15 +101,26 @@ span.nAssump {padding-left: 7px;}
 .insrt {display: flex;gap: 10px;justify-content: flex-end;align-items: center;}
 
 .insrt button {font-weight: 400;padding: 12px  14px;font-size: 16px;color: var(--white);background-color: var(--primary);border: none;border-radius: 5px;}
-td.adetactn {gap: 10px;display: flex;align-items: center;}
+.adetactn {gap: 10px;display: flex;align-items: center;}
 
-td.adetactn .edtdet svg, td.adetactn .dltdet svg {border-radius: 50px;border: 1px solid var(--field-color);padding: 8px 3px;font-size: 32px;}
+.adetactn .edtdet svg,.adetactn .dltdet svg {border-radius: 50px;border: 1px solid var(--field-color);padding: 8px 3px;font-size: 32px;}
 td {font-size: 14px;}
 
-.assumpDet table th,.assumpDet table td {text-align: center;border: 1px solid var(--field-color);font-size: 14px;}
+.assumpDet table th,.assumpDet table td {text-align: center;font-size: 14px;}
 
 tbody {border-top: none !important;}
 
-td.adetactn .edtdet svg {color: #000;}
+.adetactn .edtdet svg {color: #000;}
 
-td.adetactn .dltdet svg {color: #FF5858;}
+.adetactn .dltdet svg {color: #FF5858;}
+th {border-top: 1px solid var(--field-color) !important;}
+
+th:first-child {border-left: 1px solid var(--field-color);display: block;border-top-left-radius: 5px;}
+
+th:last-child {border-right: 1px solid var(--field-color);
+    display: block;
+    border-top-right-radius: 5px;}
+
+td:first-child {border-left: 1px solid var(--field-color);}
+
+td:last-child {border-right: 1px solid var(--field-color);}

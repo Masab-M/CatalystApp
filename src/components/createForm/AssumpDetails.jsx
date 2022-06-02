@@ -24,7 +24,7 @@ export default function AssumpDetails() {
                     </Row>
                     <Row>
                         <Col xs={12}>
-                            <Table  hover>
+                            <Table  hover className='assumpDetTable'>
                                 <thead>
                                     <tr>
                                         <th>
@@ -58,13 +58,16 @@ export default function AssumpDetails() {
                                         <td>-5%</td> 
                                         <td>-5%</td> 
                                         <td>-5%</td> 
-                                        <td className='adetactn'>
+                                        <td >
+                                            <div className="adetactn">
                                             <div className="edtdet">
                                                 <AiOutlineEdit/>
                                             </div>
                                             <div className="dltdet">
                                                 <AiOutlineDelete/>
                                             </div>
+                                            </div>
+                                            
                                         </td>
                                     </tr>
                                     <tr>
@@ -81,13 +84,16 @@ export default function AssumpDetails() {
                                         <td>-5%</td> 
                                         <td>-5%</td> 
                                         <td>-5%</td> 
-                                        <td className='adetactn'>
+                                        <td >
+                                            <div className="adetactn">
                                             <div className="edtdet">
                                                 <AiOutlineEdit/>
                                             </div>
                                             <div className="dltdet">
                                                 <AiOutlineDelete/>
                                             </div>
+                                            </div>
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -104,12 +110,14 @@ export default function AssumpDetails() {
                                         <td>-5%</td> 
                                         <td>-5%</td> 
                                         <td>-5%</td> 
-                                        <td className='adetactn'>
+                                        <td >
+                                            <div className="adetactn">
                                             <div className="edtdet">
                                                 <AiOutlineEdit/>
                                             </div>
                                             <div className="dltdet">
                                                 <AiOutlineDelete/>
+                                            </div>
                                             </div>
                                         </td>
                                     </tr>
