@@ -10,6 +10,7 @@ import Links from "./components/Links";
 import Assumption from "./components/userOne/create/Assumption";
 import Upload from "./components/userOne/create/upload";
 import Import from "./components/userOne/create/Import";
+import Component from "./components/userOne/create/Component";
 function App() {
 
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="upload" element={ <Upload/> }/>
             <Route path='import' element={<Import/>}/>
           </Route>
+          <Route path="Project/component" element={ <Component/> } />
           <Route path="Project/review" element={<ReviewProject/>} />
           <Route path="ff/generate" element={ <GenerateFF/> } />
           <Route path="ff/view" element={ <ViewFF/> } />
