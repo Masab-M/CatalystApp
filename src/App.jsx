@@ -11,6 +11,9 @@ import Assumption from "./components/userOne/create/Assumption";
 import Upload from "./components/userOne/create/upload";
 import Import from "./components/userOne/create/Import";
 import Component from "./components/userOne/create/Component";
+import ProjectLevel from "./components/userOne/level/Project/ProjectLevel";
+import ComponentLevel from "./components/userOne/level/Component/ComponentLevel";
+import ItemLevel from "./components/userOne/level/Item/ItemLevel";
 function App() {
 
   return (
@@ -30,6 +33,9 @@ function App() {
           <Route path="Project/review" element={<ReviewProject/>} />
           <Route path="ff/generate" element={ <GenerateFF/> } />
           <Route path="ff/view" element={ <ViewFF/> } />
+          <Route path="ff/view/project" element={ <ProjectLevel/> } />
+          <Route path="ff/view/component" element={ <ComponentLevel/> } />
+          <Route path="ff/view/item" element={ <ItemLevel/> } />
         </Route>
       </Routes>
     </>

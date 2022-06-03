@@ -1,12 +1,15 @@
 import React from 'react'
-import Assump from '../../createForm/common/Assump'
-import AssumpDetails from '../../createForm/common/AssumpDetails'
-
+import ProjectComponent from '../../createForm/component/ProjectComponent'
+import DashNav from '../../Dashboard/DashNav'
+import Components from '../../createForm/import/components'
+import ComponentDet from '../../createForm/import/ComponentDet'
 export default function Component() {
   return (
     <>
-    <Assump/>
-    <AssumpDetails/>
+    <DashNav/>
+    <ProjectComponent/>
+    <Components/>
+    <ComponentDet/>
     </>
   )
 }

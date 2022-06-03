@@ -29,17 +29,17 @@ export default function ViewFF() {
                             <td>@mdo</td>
                             <td>@mdo</td>
                             <td>
-                              <Link className='viewBtn plvl' to={''}>
+                              <Link className='viewBtn plvl' to={'project'}>
                               P level
                               </Link>
                             </td>
                             <td>
-                            <Link className='viewBtn clvl' to={''}>
+                            <Link className='viewBtn clvl' to={'component'}>
                               C level
                               </Link>
                             </td>
                             <td>
-                            <Link className='viewBtn ilvl' to={''}>
+                            <Link className='viewBtn ilvl' to={'item'}>
                               I level
                               </Link>
                             </td>

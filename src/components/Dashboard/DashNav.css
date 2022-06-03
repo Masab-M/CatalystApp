@@ -31,3 +31,6 @@ form.srchP {padding: 10px;
     width: 100%;}
     form.srchP .form-group input {border-radius: 5px 0px 0px 5px;background-color: var(--bg-color);border-color: var(--bg-color);}
     .srchP .form-group a svg {font-size: 20px;}
+    .wLevel {display: flex;align-items: center;}
+
+.levelText span {font-size: 20px;font-family: 'Roboto',sans-serif;font-weight: 500;color: var(--primary);}
