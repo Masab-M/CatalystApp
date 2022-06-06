@@ -1,13 +1,17 @@
 import React from 'react'
 import DashNav from '../../../Dashboard/DashNav'
-import InvestPerform from '../template/InvestPerform'
+import { Outlet } from 'react-router-dom'
+import SelectComponent from '../template/SelectComponent'
+import ItemLinks from '../template/ItemLinks'
+
 
 export default function ItemLevel() {
   return (
     <>
     <DashNav level='Item'/>
-    <InvestPerform/>
-
+    <SelectComponent/>
+    <ItemLinks/>
+    <Outlet/>
     </>
   )
 }

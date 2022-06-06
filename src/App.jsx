@@ -19,6 +19,16 @@ import Depreciation from "./components/userOne/level/Project/Depreciation";
 import Revenue from "./components/userOne/level/Project/Revenue";
 import ProfitLoss from "./components/userOne/level/Project/ProfitLoss";
 import CashFlow from "./components/userOne/level/Project/CashFlow";
+import ExpenditureC from "./components/userOne/level/Component/ExpenditureC";
+import DepriciationC from "./components/userOne/level/Component/DepriciationC";
+import RevenueC from "./components/userOne/level/Component/RevenueC";
+import ProfitLossC from "./components/userOne/level/Component/ProfitLossC";
+import CashFlowC from "./components/userOne/level/Component/CashFlowC";
+import ThreeGData from "./components/userOne/level/Item/ThreeGData";
+import ThreeGVoice from "./components/userOne/level/Item/ThreeGVoice";
+import ThreeGVideo from "./components/userOne/level/Item/ThreeGVideo";
+import FourGData from "./components/userOne/level/Item/FourGData";
+import FiveGData from "./components/userOne/level/Item/FiveGData";
 function App() {
 
   return (
@@ -47,14 +57,21 @@ function App() {
             <Route path="cashFlow" element={ <CashFlow/> } />
           </Route>
           <Route path="ff/view/component" element={ <ComponentLevel/> } >
-          <Route path="" element={ <Expenditure/> } />
-            <Route path="expenditure" element={ <Expenditure/> } />
-            <Route path="depreciation" element={ <Depreciation/> } />
-            <Route path="revenue" element={ <Revenue/> } />
-            <Route path="profitandLoss" element={ <ProfitLoss/> } />
-            <Route path="cashFlow" element={ <CashFlow/> } />
+            <Route path="" element={ <ExpenditureC/> } />
+            <Route path="expenditure" element={ <ExpenditureC/> } />
+            <Route path="depreciation" element={ <DepriciationC/> } />
+            <Route path="revenue" element={ <RevenueC/> } />
+            <Route path="profitandLoss" element={ <ProfitLossC/> } />
+            <Route path="cashFlow" element={ <CashFlowC/> } />
           </Route>
-          <Route path="ff/view/item" element={ <ItemLevel/> } />
+          <Route path="ff/view/item" element={ <ItemLevel/> } >
+            <Route path="" element={ <ThreeGData/> } />
+            <Route path="threedata" element={ <ThreeGData/> } />
+            <Route path="threevoice" element={ <ThreeGVoice/> } />
+            <Route path="fourdata" element={ <ThreeGVideo/> } />
+            <Route path="fourvoice" element={ <FourGData/> } />
+            <Route path="fivedata" element={ <FiveGData/> } />
+          </Route>
         </Route>
       </Routes>
     </>

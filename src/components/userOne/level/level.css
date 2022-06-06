@@ -3,7 +3,7 @@
 .levelDiv table th {
     border-top: 1px solid var(--field-color) !important;
   }
-  
+  .levelDiv th,.levelDiv td {font-size: 14px;}
   .levelDiv table thead th:first-child {
     border-left: 1px solid var(--field-color);
     display: block;
@@ -57,3 +57,6 @@ ul.infoLinks li a span {display: block;-webkit-transform: skew(20deg) !important
   -moz-transform: skew(20deg) !important;
   -o-transform: skew(20deg) !important;
       transform: skew(-41deg) !important;}
+      .levelDiv thead th {padding: 20px 15px !important;}
+
+.levelDiv tbody th,.levelDiv tbody  td {padding: 15px !important;}
