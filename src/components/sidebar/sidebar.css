@@ -1,6 +1,7 @@
 .sideBar {position: fixed;
     width: 20%;
     height: 100%;
+    z-index:9999;
     background-color: var(--primary);}
 
 .sideBarLinks {margin-top: 65px;}

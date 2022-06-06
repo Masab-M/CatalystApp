@@ -14,6 +14,11 @@ import Component from "./components/userOne/create/Component";
 import ProjectLevel from "./components/userOne/level/Project/ProjectLevel";
 import ComponentLevel from "./components/userOne/level/Component/ComponentLevel";
 import ItemLevel from "./components/userOne/level/Item/ItemLevel";
+import Expenditure from "./components/userOne/level/Project/Expenditure";
+import Depreciation from "./components/userOne/level/Project/Depreciation";
+import Revenue from "./components/userOne/level/Project/Revenue";
+import ProfitLoss from "./components/userOne/level/Project/ProfitLoss";
+import CashFlow from "./components/userOne/level/Project/CashFlow";
 function App() {
 
   return (
@@ -33,8 +38,22 @@ function App() {
           <Route path="Project/review" element={<ReviewProject/>} />
           <Route path="ff/generate" element={ <GenerateFF/> } />
           <Route path="ff/view" element={ <ViewFF/> } />
-          <Route path="ff/view/project" element={ <ProjectLevel/> } />
-          <Route path="ff/view/component" element={ <ComponentLevel/> } />
+          <Route path="ff/view/project" element={ <ProjectLevel/> } >
+            <Route path="" element={ <Expenditure/> } />
+            <Route path="expenditure" element={ <Expenditure/> } />
+            <Route path="depreciation" element={ <Depreciation/> } />
+            <Route path="revenue" element={ <Revenue/> } />
+            <Route path="profitandLoss" element={ <ProfitLoss/> } />
+            <Route path="cashFlow" element={ <CashFlow/> } />
+          </Route>
+          <Route path="ff/view/component" element={ <ComponentLevel/> } >
+          <Route path="" element={ <Expenditure/> } />
+            <Route path="expenditure" element={ <Expenditure/> } />
+            <Route path="depreciation" element={ <Depreciation/> } />
+            <Route path="revenue" element={ <Revenue/> } />
+            <Route path="profitandLoss" element={ <ProfitLoss/> } />
+            <Route path="cashFlow" element={ <CashFlow/> } />
+          </Route>
           <Route path="ff/view/item" element={ <ItemLevel/> } />
         </Route>
       </Routes>
