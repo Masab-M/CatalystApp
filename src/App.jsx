@@ -29,6 +29,7 @@ import ThreeGVoice from "./components/userOne/level/Item/ThreeGVoice";
 import ThreeGVideo from "./components/userOne/level/Item/ThreeGVideo";
 import FourGData from "./components/userOne/level/Item/FourGData";
 import FiveGData from "./components/userOne/level/Item/FiveGData";
+import DashBoardTwo from "./view/UserTwo/DashBoardTwo";
 function App() {
 
   return (
@@ -72,6 +73,10 @@ function App() {
             <Route path="fourvoice" element={ <FourGData/> } />
             <Route path="fivedata" element={ <FiveGData/> } />
           </Route>
+        </Route>
+        <Route path="usertwo/login" element={ <Login/>} />
+        <Route path="usertwo/dashboard" element={ <DashBoardTwo/> }>
+
         </Route>
       </Routes>
     </>
