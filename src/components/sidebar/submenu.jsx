@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
 
-const submenu = ({ item }) => {
+const submenu = ({ item,linkAccess }) => {
     const [subnav, setSubnav] = useState(false);
 
     const showSubnav = () => setSubnav(!subnav);
@@ -21,12 +21,14 @@ const submenu = ({ item }) => {
             <div className="submenuLinks">
             {subnav &&
                 item.subNav.map((item, index) => {
-                    return (
-                        <Link to={item.path} key={index}>
-                            {item.icon}
-                            <label htmlFor="">{item.title}</label>
-                        </Link>
-                    );
+                    if(item.Access==linkAccess || item.Access=='both' ){
+                        return (
+                            <Link to={item.path} key={index}>
+                                {item.icon}
+                                <label htmlFor="">{item.title}</label>
+                            </Link>
+                        );
+                    }
                 })}
             </div>
           

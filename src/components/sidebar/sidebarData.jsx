@@ -22,25 +22,36 @@ export const SidebarData= [
 
     subNav: [
       {
+        Access:'Admin',
         title: "Create Project",
         path: "Project/create",
         icon: <AiOutlineFolderAdd />,
       },
       {
+        Access:'Admin',
         title: "Review Projects",
         path: "Project/review",
         icon: <AiOutlineEye/>,
       },
       {
+        Access:'Admin',
         title: "Generate FF",
         path: "ff/generate",
         icon: <FaRegFolder/>,
       },
       {
-        title: "View FF",
+        Access:'User',
+        title: "View Project",
+        path: "Project/view",
+        icon: <AiOutlineEye/>,
+      },
+      {
+        Access:'both',
+        title: "View FF", 
         path: "ff/view",
         icon: <AiOutlineEye/>,
       },
+      
     ],
   },
   {
