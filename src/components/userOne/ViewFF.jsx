@@ -90,7 +90,7 @@ export default function ViewFF() {
                         </tr>
                     </tbody>
                 </Table>
-            </div>
+    </div>
     </>
   )
 }

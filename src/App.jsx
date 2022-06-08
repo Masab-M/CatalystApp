@@ -78,6 +78,7 @@ function App() {
         <Route path="usertwo/login" element={ <Login/>} />
         <Route path="usertwo/dashboard" element={ <DashBoardTwo/> }>
           <Route path="Project/view" element={ <ViewProject/> }/>
+          <Route path="ff/view" element={ <ViewFF/> } />
         </Route>
       </Routes>
     </>

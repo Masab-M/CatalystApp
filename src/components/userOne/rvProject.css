@@ -50,3 +50,4 @@ td.prjctactn .dltProject svg {color: red;}
 .viewBtn:hover {
     color: var(--white);
 }
+td.vbtn a {border-radius: 5px;font-size: 18px;font-weight: 500;padding: 7px 11px;color: var(--white);font-family: 'Roboto',sans-serif;text-decoration: none;background-color: var(--primary);}
