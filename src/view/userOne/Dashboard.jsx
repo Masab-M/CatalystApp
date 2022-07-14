@@ -4,7 +4,7 @@ import SideBar from '../../components/sidebar/sidebar'
 function createProject() {
   return (
     <>
-        <SideBar/>
+        <SideBar Access='Admin'/>
         <div className="mainContent">
         <Outlet/>
         </div>
