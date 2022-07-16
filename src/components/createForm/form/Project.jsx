@@ -55,7 +55,6 @@ export default function Project() {
           .catch(function (error) {
             console.log(error);
           });
-
     };
     return (
         <div className="ProjectForm">
@@ -109,7 +108,6 @@ export default function Project() {
                                         Project Status
                                     </label>
                                     <select name="pStatus" id="pStatus">
-                                    <option value="2">sdsa</option>
 
                                         {status.map((name) =>
                                             <option value={name.ProjectStatusType_Id}>{name.ProjectStatusType_Name}</option>
@@ -121,7 +119,6 @@ export default function Project() {
                                         Project Owner
                                     </label>
                                     <select name="pOwner" id="pOwner">
-                                        <option value="2">sdsa</option>
                                     {owner.map((name) =>
                                             <option value={name.ProjectOwner_Id}>{name.ProjectStOwner_Name}</option>
                                         )}
