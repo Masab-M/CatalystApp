@@ -37,14 +37,6 @@ export default function Project() {
         const P_ver=event.target[5].value
         const P_status=event.target[6].value
         const P_owner=event.target[7].value
-        // console.log('Name',P_name);
-        // console.log('id',P_id);
-        // console.log('desc',P_desc);
-        // console.log('date',P_date);
-        // console.log('year',P_year);
-        // console.log('ver',P_ver);
-        // console.log('status',P_status);
-        // console.log('owner',P_owner);
         const p_newPayload = { 
             'Project_Name': P_name,
             'Project_Desc': P_desc,
