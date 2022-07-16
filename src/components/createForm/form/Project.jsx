@@ -108,7 +108,6 @@ export default function Project() {
                                         Project Status
                                     </label>
                                     <select name="pStatus" id="pStatus">
-
                                         {status.map((name) =>
                                             <option value={name.ProjectStatusType_Id}>{name.ProjectStatusType_Name}</option>
                                         )}
