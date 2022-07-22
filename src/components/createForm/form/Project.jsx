@@ -9,23 +9,22 @@ import { useEffect } from 'react';
 export default function Project() {
     const [status, setstatus] = useState([])
     const [owner, setowner] = useState([])
-    const url = 'http://localhost:5001/'
-    const statusEP = 'v1/createjourney/getprojectstatustypes';
-    const ownerEP = 'v1/createjourney/getprojectownerlist';
-    const newProjectEP = 'v1/createjourney/createnewproject';
+    const url = 'https://boiling-dawn-83506.herokuapp.com'
+    const statusEP = '/v1/createjourney/getprojectstatustypes';
+    const ownerEP = '/v1/createjourney/getprojectownerlist';
+    const newProjectEP = '/v1/createjourney/createnewproject';
     useEffect(() => {
         const statusP = axios.get(url + statusEP)
         const ownerP = axios.get(url + ownerEP)
-        promise.all([statusP, ownerP]).then(function (result) {
-            const statusObj = JSON.parse(result[0]);
-            const ownerObj = JSON.parse(result[1]);
-            () => {
+        console.log(url + statusEP);
+        Promise.all([statusP, ownerP]).then(function (result) {
+            const statusObj = result[0].data
+            const ownerObj = result[1].data;
+            console.log(ownerObj.projectOwnerList);
                 setstatus(statusObj.projectStatusTypes);
                 setowner(ownerObj.projectOwnerList);
-            }
         });
     }, [])
-
     let navigate = useNavigate();
     const hello = (event) => {
         event.preventDefault();
@@ -38,13 +37,13 @@ export default function Project() {
         const P_status=event.target[6].value
         const P_owner=event.target[7].value
         const p_newPayload = { 
-            'Project_Name': P_name,
-            'Project_Desc': P_desc,
-            'Project_Create_Date': P_date,
-            'Project_Deployemnt_Year': P_year,
-            'Project_StatusType_Id': P_status,
-            'Project_Owner_Id': P_owner,
-            'Project_version': P_ver,
+            "Project_Name": P_name,
+            "Project_Desc": P_desc,
+            "Project_Create_Date": P_date,
+            "Project_Deployemnt_Year": P_year,
+            "Project_StatusType_Id": P_status,
+            "Project_Owner_Id": P_owner,
+            "Project_version": P_ver,
              };
         const myJSON = JSON.stringify(p_newPayload);
         axios.post(url+newProjectEP, myJSON)
@@ -119,7 +118,7 @@ export default function Project() {
                                     </label>
                                     <select name="pOwner" id="pOwner">
                                     {owner.map((name) =>
-                                            <option value={name.ProjectOwner_Id}>{name.ProjectStOwner_Name}</option>
+                                            <option value={name.ProjectOwner_Id}>{name.ProjectOwner_Name}</option>
                                         )}
                                     </select>
                                 </div>
