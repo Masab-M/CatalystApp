@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 export default function Project() {
     const [status, setstatus] = useState([])
     const [owner, setowner] = useState([])
-    const url = 'https://boiling-dawn-83506.herokuapp.com'
+    const url = 'https://catalystcreatejourney.herokuapp.com'
     const statusEP = '/v1/createjourney/getprojectstatustypes';
     const ownerEP = '/v1/createjourney/getprojectownerlist';
     const newProjectEP = '/v1/createjourney/createnewproject';
@@ -21,8 +21,8 @@ export default function Project() {
             const statusObj = result[0].data
             const ownerObj = result[1].data;
             console.log(ownerObj.projectOwnerList);
-                setstatus(statusObj.projectStatusTypes);
-                setowner(ownerObj.projectOwnerList);
+            setstatus(statusObj.projectStatusTypes);
+            setowner(ownerObj.projectOwnerList);
         });
     }, [])
     let navigate = useNavigate();
@@ -49,7 +49,7 @@ export default function Project() {
         axios.post(url+newProjectEP, myJSON)
         .then(function (response) {
             console.log(response);
-            navigate("/userOne/dashBoard/Project/assumption/upload", { replace: true });
+            navigate(`/userOne/dashBoard/Project/assumption/upload?name=${P_name}`, { replace: true });
           })
           .catch(function (error) {
             console.log(error);

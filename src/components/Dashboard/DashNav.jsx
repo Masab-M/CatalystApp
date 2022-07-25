@@ -9,12 +9,14 @@ import './DashNav.css'
 export default function DashNav(props) {
     const isSrch = props.srch;
     const level = props.level;
+    const p_Name = props.p_Name;
+    console.log('name',p_Name);
     return (
         <div className='DashNav'>
             <Container fluid>
                 <Row>
                     <Col xs={7}>
-                        {isSrch ? <Search /> : <BranchDet />}
+                        {isSrch ? <Search /> : <BranchDet branchName={p_Name}/>}
                     </Col>
                     <Col xs={5}>
                         <div className="wLevel">
@@ -47,14 +49,14 @@ function Level(props) {
         </span>
     </div>;
 }
-function BranchDet() {
+function BranchDet(props) {
     return <div className="BranchDet">
         <span className="type">
             Project
         </span>
         <CgArrowLongRight />
         <span className="BranchName">
-            Zong Kohat City
+            {props.branchName ? props.branchName :"Project Name"}
         </span>
     </div>;
 }
