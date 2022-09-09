@@ -42,9 +42,6 @@ function App() {
         <Route path="userOne/dashBoard" element={<CreateProject />}>
           <Route path="Project/create" element={<CreateProjectComponent />} />
           <Route path="Project/assumption" element={ <Assumption /> } >
-            <Route path="" element={<Upload />}/>
-            <Route path="upload" element={ <Upload/> }/>
-            <Route path='import' element={<Import/>}/>
           </Route>
           <Route path="Project/component" element={ <Component/> } />
           <Route path="Project/review" element={<ReviewProject/>} />
@@ -68,7 +65,7 @@ function App() {
           </Route>
           <Route path="ff/view/item" element={ <ItemLevel/> } >
             <Route path="" element={ <ThreeGData/> } />
-            <Route path="threedata" element={ <ThreeGData/> } />
+              <Route path="threedata" element={ <ThreeGData/> } />
             <Route path="threevoice" element={ <ThreeGVoice/> } />
             <Route path="fourdata" element={ <ThreeGVideo/> } />
             <Route path="fourvoice" element={ <FourGData/> } />

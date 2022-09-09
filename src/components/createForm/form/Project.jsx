@@ -16,11 +16,9 @@ export default function Project() {
     useEffect(() => {
         const statusP = axios.get(url + statusEP)
         const ownerP = axios.get(url + ownerEP)
-        console.log(url + statusEP);
         Promise.all([statusP, ownerP]).then(function (result) {
             const statusObj = result[0].data
             const ownerObj = result[1].data;
-            console.log(ownerObj.projectOwnerList);
             setstatus(statusObj.projectStatusTypes);
             setowner(ownerObj.projectOwnerList);
         });
@@ -48,8 +46,7 @@ export default function Project() {
         const myJSON = JSON.stringify(p_newPayload);
         axios.post(url+newProjectEP, myJSON)
         .then(function (response) {
-            console.log(response);
-            navigate(`/userOne/dashBoard/Project/assumption/upload?name=${P_name}`, { replace: true });
+            navigate(`/userOne/dashBoard/Project/assumption?name=${P_name}&id=${P_id}`, { replace: true });
           })
           .catch(function (error) {
             console.log(error);

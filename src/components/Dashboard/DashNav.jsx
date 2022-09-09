@@ -10,7 +10,6 @@ export default function DashNav(props) {
     const isSrch = props.srch;
     const level = props.level;
     const p_Name = props.p_Name;
-    console.log('name',p_Name);
     return (
         <div className='DashNav'>
             <Container fluid>

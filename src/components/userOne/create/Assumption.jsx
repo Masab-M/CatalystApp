@@ -3,6 +3,7 @@ import {NavLink, Outlet } from 'react-router-dom'
 import DashNav from '../../Dashboard/DashNav'
 import axios from 'axios';
 import { Link, useSearchParams } from 'react-router-dom'
+import Import from './Import';
 
 export default function Assumption() {
   const [project, setproject] = useState('');
@@ -24,18 +25,10 @@ export default function Assumption() {
           console.log(err);
       })
   }, [])
-  console.log(project);
   return (
     <>
     <DashNav srch={false} p_Name={project} />
-    <div className="linkDiv">
-    <div className="assumpLinks">
-        <NavLink  className='linkAssump' to='upload'>UPLOAD ASSUMPTION FILES</NavLink>
-        <NavLink  className='linkAssump' to='import'>IMPORT ASSUMPTIONS FROM</NavLink>
-    </div>
-    </div>
-
-    <Outlet/>
+    <Import/>
     </>
   )
 }
