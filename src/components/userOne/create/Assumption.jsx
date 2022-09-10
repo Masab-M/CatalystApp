@@ -16,7 +16,7 @@ export default function Assumption() {
       Promise.all([pListP]).then((result) => {
           const listObj = result[0].data;
           const p_List = listObj.projectList
-          const p_for=p_List.forEach((data)=>{
+            p_List.forEach((data)=>{
               if(data.Project_Name===name){
                   setproject(data.Project_Name)
               }

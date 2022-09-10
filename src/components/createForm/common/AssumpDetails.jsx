@@ -28,9 +28,9 @@ export default function AssumpDetails() {
 
     const handleShow = () => setShow(true);
     const Keys = Object.keys(assumption[selectRecord]).map((val, index) =>
-        (index > 2 && index < (Object.keys(assumption[selectRecord]).length - 1)) ? <th>{val}</th> :''
+        (index > 2 && index < (Object.keys(assumption[selectRecord]).length - 1)) ? <th>{val}</th> : ''
     )
-    const values= Object.values(assumption[selectRecord]).map((val, index) =>
+    const values = Object.values(assumption[selectRecord]).map((val, index) =>
         index > 2 && index < (Object.keys(assumption[selectRecord]).length - 1) ?
             <td>{val}</td> : ''
     )
@@ -76,40 +76,44 @@ export default function AssumpDetails() {
                         </Row>
                         <Row>
                             <Col xs={12}>
-                                <Table hover responsive className='assumpDetTable'>
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                <input type="checkbox" name="slctAll" id="slctAll" />
-                                            </th>
-                                          {
-                                            Keys
-                                          }
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" name="" id="" />
-                                            </td>
-                                           {
-                                            values
-                                           }
-                                            <td >
-                                                <div className="adetactn">
-                                                    <div className="edtdet">
-                                                        <AiOutlineEdit variant="primary" onClick={handleShow} />
-                                                    </div>
-                                                    <div className="dltdet">
-                                                        <AiOutlineDelete />
-                                                    </div>
-                                                </div>
+                                {
+                                    Object.keys(assumption[0]).length === 0 ? '' :
+                                        <Table hover responsive className='assumpDetTable'>
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <input type="checkbox" name="slctAll" id="slctAll" />
+                                                    </th>
+                                                    {
+                                                        Keys
+                                                    }
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox" name="" id="" />
+                                                    </td>
+                                                    {
+                                                        values
+                                                    }
+                                                    <td >
+                                                        <div className="adetactn">
+                                                            <div className="edtdet">
+                                                                <AiOutlineEdit variant="primary" onClick={handleShow} />
+                                                            </div>
+                                                            <div className="dltdet">
+                                                                <AiOutlineDelete />
+                                                            </div>
+                                                        </div>
 
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </Table>
+                                }
+
                             </Col>
                         </Row>
                     </Container>

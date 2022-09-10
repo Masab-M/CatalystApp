@@ -3,18 +3,31 @@ import React, { useContext, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { Link, useSearchParams } from 'react-router-dom'
 import { AssumpContext } from '../../../Context/AssumpContext'
+import { useNavigate } from 'react-router-dom'
 export default function ProjectImport() {
-    const [id, setid] = useState(0)
-    const { project, assumption,setassumption } = useContext(AssumpContext)
+  const [pid, setpid] = useState(null)
+    let navigate = useNavigate();
+    const { project, assumption,setassumption,id,setid } = useContext(AssumpContext)
+    console.log('p',project);
+    const [searchParams] = useSearchParams();
+    const name = searchParams.get('name')
     function getid(e) {
         const {value}=e.target;
         setid(value)
     }
-    function importAssumption(e) {
+    async function importAssumption(e) {
         e.preventDefault()
+        const pid=await project.projectList.filter((val)=>{
+            if(val.Project_Name===name){
+                    return val;
+            }
+        }).map((val)=>{
+           return val.Project_Id
+        })
+        console.log(pid);
         const newobj = assumption
         assumption.map((val,index) =>
-        newobj[index].project_id=id
+        newobj[index].project_id=pid[0]
         )
         setassumption(newobj)
         const assumptionList=assumption.filter((val)=>{
@@ -41,23 +54,18 @@ export default function ProjectImport() {
         Object.keys(depList[0]).forEach(element => {
             depList[0][element] = String(depList[0][element])
         });
-        console.log(expList[0],depList[0],assumption);
-        try {
-            axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptions',assumptionList, {headers}).then((result)=>{
+
+            const assumpPromise=axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptions',assumptionList, {headers});
+            const depPromise=axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptionsdepreciationlife',depList[0],{headers})
+            const expPromise=axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptionsrecurrentexpenses',JSON.stringify(expList[0]),{headers})
+            Promise.all([assumpPromise,depPromise,expPromise]).then((result)=>{
                 console.log(result);
-            }).catch((err)=>console.log(err))
-            axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptionsdepreciationlife',depList[0],{headers}).then((result)=>{
-                console.log(result);
-            }).catch((err)=>console.log(err))
-            axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptionsrecurrentexpenses',JSON.stringify(expList[0]),{headers}).then((result)=>{
-                console.log(result);
-            }).catch((err)=>console.log(err))
-        } catch (error) {
-            console.log();
-        }
+                navigate(`/userOne/dashBoard/Project/component?name=${name}`)
+            }).catch((err)=>{
+                console.log(err);
+            })
 
     }
-    console.log('id',project);
     return (
         <>
             <div className='projectDiv'>
@@ -71,7 +79,7 @@ export default function ProjectImport() {
                                 <form action="" onSubmit={importAssumption} className="assumptions">
                                     <div className="form-group">
                                         <label htmlFor="slctAssump">Select Projects</label>
-                                        <select name="slctAssump" id="slctAssump" required onChange={getid}>
+                                        <select name="slctAssump" id="slctAssump" required onChange={getid} >
                                             <option value="">Select Project</option>
                                             {project.projectList.map((val) =>
                                                 <option value={val.Project_Id}>{val.Project_Name}</option>

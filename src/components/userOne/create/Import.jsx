@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import AssumpDetails from '../../createForm/common/AssumpDetails'
@@ -8,6 +8,7 @@ import { AssumpContext } from '../../../Context/AssumpContext'
 import axios from 'axios'
 export default function Import() {
   const [selectRecord, setSelectRecord] = useState(0)
+  const [id, setid] = useState(null)
   const [project, setproject] = useState({
     projectList: []
   })
@@ -15,25 +16,37 @@ export default function Import() {
     {}
   ])
   useEffect(() => {
-    const assumption = axios.get('https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptions/0')
-    const depreication = axios.get('https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptionsDepreciationLife/0')
-    const expense = axios.get('https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptionsRecurrentExpenses/0')
     const projects = axios.get('https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectlist')
-    Promise.all([projects,assumption, depreication, expense]).then((result) => {
+    Promise.all([projects]).then((result) => {
       const projectlist = result[0].data;
-      const assumptions = result[1].data;
-      const depList = result[2].data;
-      const expList = result[3].data;
-      setassumption([...assumptions.projectAssumptions,...expList.projectAssumptionsRecurrentExpenses,...depList.projectAssumptionsDepreciationLife])
       setproject(projectlist)
     }).catch((err) => {
       console.log(err);
     })
   }, [])
+  useLayoutEffect(() => {
+    if(id!==null)
+    {
+      const assumption = axios.get(`https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptions/${id}`)
+      const depreication = axios.get(`https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptionsDepreciationLife/${id}`)
+      const expense = axios.get(`https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptionsRecurrentExpenses/${id}`)
+      Promise.all([assumption, depreication, expense]).then((result) => {
+        console.log('id changed',id);
+        const assumptions = result[0].data;
+        const depList = result[1].data;
+        const expList = result[2].data;
+        console.log(assumptions,depList,expList);
+        setassumption([...assumptions.projectAssumptions,...expList.projectAssumptionsRecurrentExpenses,...depList.projectAssumptionsDepreciationLife])
+      }).catch((err) => {
+        console.log(err);
+      })
+
+    }
+  }, [id])
   
   return (
     <>
-      <AssumpContext.Provider value={{ project,assumption,setassumption,setSelectRecord,selectRecord }} >
+      <AssumpContext.Provider value={{id,setid, project,assumption,setassumption,setSelectRecord,selectRecord }} >
         <ProjectImport />
         <Assump />
         <AssumpDetails />

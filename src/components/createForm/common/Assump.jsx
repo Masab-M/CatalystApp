@@ -7,6 +7,7 @@ export default function Assump() {
   const chooseRecord=(val)=>{
     setSelectRecord(val)
   }
+  console.log('a',assumption[0]);
   return (
     <>
       <div className="AssumpDiv">
@@ -18,13 +19,14 @@ export default function Assump() {
             <Row>
               {
                 assumption.map((val, index) =>
-                  <Col xs={4}>
-                    <div className="singleAssump" onClick={()=>{chooseRecord(index)}}>
-                      <span className="asumpid">{val.assumption_id || val.depreciationlife_id || val.recurrentexpense_Id}</span>
-                      <span className="nAssump">{val.assumption_name || val.depreciationlife_name || val.recurrentexpense_Name}</span>
-                      <AiOutlineEdit />
-                    </div>
-                  </Col>
+                Object.keys(assumption[0]).length === 0 ?
+                '': <Col xs={4}>
+                 <div className="singleAssump" onClick={()=>{chooseRecord(index)}}>
+                   <span className="asumpid">{val.assumption_id || val.depreciationlife_id || val.recurrentexpense_Id}</span>
+                   <span className="nAssump">{val.assumption_name || val.depreciationlife_name || val.recurrentexpense_Name}</span>
+                   <AiOutlineEdit />
+                 </div>
+               </Col>
                 )
               }
             </Row>
