@@ -16,7 +16,7 @@ export default function Component() {
       const pListP = axios.get(url + p_list)
       Promise.all([pListP]).then((result) => {
           const listObj = result[0].data;
-          const p_List = listObj.projectList
+          const p_List = listObj.projectList;
             p_List.forEach((data)=>{
               if(data.Project_Name===name){
                   setproject(data.Project_Name)
