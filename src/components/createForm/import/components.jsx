@@ -1,7 +1,11 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap'
 import {AiOutlineEdit} from 'react-icons/ai'
+import { ComponentAssump } from '../../../Context/ProjectComponent'
 export default function components() {
+  const {cAssump,files}=useContext(ComponentAssump);
   return (
     <>
         <div className="AssumpDiv">
@@ -11,27 +15,16 @@ export default function components() {
         </div>
         <Container fluid>
         <Row>
-            <Col xs={4}>
+          {
+            cAssump.length>0 ?<Col xs={4}>
             <div className="singleAssump">
-              <span className="asumpid">1263589</span>
-              <span className="nAssump">Assumption of a Model town....</span>
+              <span className="asumpid">1</span>
+              <span className="nAssump">{files[0].name}</span>
               <AiOutlineEdit/>
             </div>
-            </Col>
-            <Col xs={4}>
-            <div className="singleAssump">
-              <span className="asumpid">1263589</span>
-              <span className="nAssump">Assumption of a Model town....</span>
-              <AiOutlineEdit/>
-            </div>
-            </Col>
-            <Col xs={4}>
-            <div className="singleAssump">
-              <span className="asumpid">1263589</span>
-              <span className="nAssump">Assumption of a Model town....</span>
-              <AiOutlineEdit/>
-            </div>
-            </Col>
+            </Col>:'Browse and Upload File'
+          }
+            
         </Row>
         </Container>
     </div>

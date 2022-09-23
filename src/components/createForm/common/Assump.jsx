@@ -7,7 +7,6 @@ export default function Assump() {
   const chooseRecord=(val)=>{
     setSelectRecord(val)
   }
-  console.log('a',assumption[0]);
   return (
     <>
       <div className="AssumpDiv">

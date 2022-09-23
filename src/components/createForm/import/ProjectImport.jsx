@@ -8,7 +8,7 @@ export default function ProjectImport() {
   const [pid, setpid] = useState(null)
     let navigate = useNavigate();
     const { project, assumption,setassumption,id,setid } = useContext(AssumpContext)
-    console.log('p',project);
+
     const [searchParams] = useSearchParams();
     const name = searchParams.get('name')
     function getid(e) {
@@ -24,7 +24,7 @@ export default function ProjectImport() {
         }).map((val)=>{
            return val.Project_Id
         })
-        console.log(pid);
+        localStorage.setItem('new_project_id',pid[0])
         const newobj = assumption
         assumption.map((val,index) =>
         newobj[index].project_id=pid[0]
@@ -59,7 +59,7 @@ export default function ProjectImport() {
             const depPromise=axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptionsdepreciationlife',depList[0],{headers})
             const expPromise=axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptionsrecurrentexpenses',JSON.stringify(expList[0]),{headers})
             Promise.all([assumpPromise,depPromise,expPromise]).then((result)=>{
-                console.log(result);
+
                 navigate(`/userOne/dashBoard/Project/component?name=${name}`)
             }).catch((err)=>{
                 console.log(err);

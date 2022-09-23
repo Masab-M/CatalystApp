@@ -31,11 +31,10 @@ export default function Import() {
       const depreication = axios.get(`https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptionsDepreciationLife/${id}`)
       const expense = axios.get(`https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptionsRecurrentExpenses/${id}`)
       Promise.all([assumption, depreication, expense]).then((result) => {
-        console.log('id changed',id);
+
         const assumptions = result[0].data;
         const depList = result[1].data;
         const expList = result[2].data;
-        console.log(assumptions,depList,expList);
         setassumption([...assumptions.projectAssumptions,...expList.projectAssumptionsRecurrentExpenses,...depList.projectAssumptionsDepreciationLife])
       }).catch((err) => {
         console.log(err);
