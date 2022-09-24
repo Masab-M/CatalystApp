@@ -5,7 +5,8 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { AssumpContext } from '../../../Context/AssumpContext'
 import { useNavigate } from 'react-router-dom'
 export default function ProjectImport() {
-  const [pid, setpid] = useState(null)
+
+    const [pid, setpid] = useState(null)
     let navigate = useNavigate();
     const { project, assumption,setassumption,id,setid } = useContext(AssumpContext)
 
@@ -68,6 +69,7 @@ export default function ProjectImport() {
     }
     return (
         <>
+
             <div className='projectDiv'>
                 <div className="projectAssump">
                     <Container fluid>
@@ -88,7 +90,9 @@ export default function ProjectImport() {
                                         </select>
                                     </div>
                                     <div className="actbtn">
-                                        <Link to=''>Back</Link>
+                                        <button onClick={()=>{
+                                            navigate(-1);
+                                        }} >Back</button>
                                         <button type='Submit'>Save</button>
                                     </div>
                                 </form>

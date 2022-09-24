@@ -21,7 +21,12 @@ export default function ComponentDet() {
         e.preventDefault();
         let newArray = [];
         header.map((val, index) => {
-            newArray.push(e.target[index].value);
+            console.log(e.target[index].value,cAssump[editRecord+1]);
+            try {
+                newArray.push(e.target[index].value);
+            } catch (error) {
+                
+            }
         })
         let tempArray = cAssump
         tempArray[editRecord+1] = newArray;

@@ -3,10 +3,18 @@ import React from 'react'
 import { useState } from 'react';
 import { useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import * as XLSX from 'xlsx';
 import { ComponentAssump } from '../../../Context/ProjectComponent';
+import Toast from 'react-bootstrap/Toast';
+import ToastContainer from 'react-bootstrap/ToastContainer';
+
 export default function ProjectComponent() {
+    let navigate = useNavigate();
+        //toast state and function
+        const [showA, setShowA] = useState(false);
+      
+        const toggleShowA = () => setShowA(!showA);
     const { files, setfiles, cAssump, setcAssump } = useContext(ComponentAssump)
     const [type, setType] = useState(null);
     function getFiles(e) {
@@ -67,6 +75,10 @@ export default function ProjectComponent() {
         const assumpPromise = axios.post(url, payload, { headers });
         Promise.all([assumpPromise]).then((result) => {
             console.log(result);
+            toggleShowA();
+            setTimeout(() => {
+                toggleShowA()
+            }, 3000);
         }).catch((err) => {
             console.log(err);
         })
@@ -88,6 +100,21 @@ export default function ProjectComponent() {
     }
     return (
         <>
+        <ToastContainer position="bottom-end" className="p-3">
+        <Toast show={showA} onClose={toggleShowA}>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded me-2"
+              alt=""
+            />
+            <strong className="me-auto">Component Assumptions</strong>
+            <small>Just Now</small>
+          </Toast.Header>
+          <Toast.Body>File is Added</Toast.Body>
+        </Toast>
+
+        </ToastContainer>
             <div className='projectDiv'>
                 <div className="projectAssump">
                     <Container fluid>
@@ -100,7 +127,7 @@ export default function ProjectComponent() {
                                     <div className="form-group">
                                         <label htmlFor="aFile">Import Component</label>
                                         <div className="uploadField">
-                                            <input type="file" name="aFile" id="aFile" accept=".xls,.xlsx,.ods,.csv" multiple onChange={getFiles} />
+                                            <input type="file" name="aFile" id="aFile" accept=".xls,.xlsx,.ods,.csv"  onChange={getFiles} required/>
                                             <div className="fileName">
                                                 <span className='uploadName'></span>
                                             </div>
@@ -128,7 +155,11 @@ export default function ProjectComponent() {
                                     </div>
                                     <div className="actbtn">
                                         <button type='submit'>Save</button>
-                                        <Link to=''>Finish</Link>
+                                        <button onClick={()=>
+                                           {
+                                            navigate(`/userOne/dashBoard/ff/generate?request=new_project`)
+                                           }
+                                        }>Finish</button>
                                     </div>
                                 </form>
                             </Col>
