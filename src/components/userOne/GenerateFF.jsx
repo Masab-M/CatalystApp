@@ -22,7 +22,7 @@ export default function GenerateFF() {
         setTimeout(() => {
           toggleShowA()
         }, 3000);
-      }
+      } 
     }, [])
     
   return (

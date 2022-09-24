@@ -36,14 +36,16 @@ export default function ProjectComponent() {
             })
             return obj;
         })
-        objArray.component_name = e.target[2].value;
-        objArray.component_desc = e.target[3].value;
-        objArray.component_filename = files[0].name;
+        let component_detail={}
+
+        component_detail.component_name = e.target[2].value;
+        component_detail.component_desc = e.target[3].value;
+        component_detail.component_filename = files[0].name;
         let id=localStorage.getItem('new_project_id');
-        objArray.project_id = parseInt(id);
-        console.log(objArray);
+        component_detail.project_id = id;
+        objArray.component_detail=component_detail;
+        console.log('Payload',objArray);
         let url;
-        console.log(type);
         switch (parseInt(type)) {
             case 1:
                 console.log('done');
