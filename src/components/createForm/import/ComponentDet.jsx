@@ -12,7 +12,7 @@ import Modal from 'react-bootstrap/Modal';
 import { BiLeftTopArrowCircle } from 'react-icons/bi'
 export default function ComponentDet() {
     // Contexts States
-    const { cAssump, setcAssump } = useContext(ComponentAssump)
+    const { cAssump, setcAssump,select } = useContext(ComponentAssump)
     // Modal states and functions
     var tableData;
     const [show, setShow] = useState(false);
@@ -31,7 +31,6 @@ export default function ComponentDet() {
         let tempArray = cAssump
         tempArray[editRecord+1] = newArray;
         setcAssump(tempArray)
-        console.log(cAssump);
         setShow(false)
     };
     const handleShow = (index) => {
@@ -52,16 +51,14 @@ export default function ComponentDet() {
     } catch (error) {
     }
     useLayoutEffect(() => {
-        if (cAssump[0] === undefined) {
+        if (select === null) {
             setHeader([]);
         }
         else {
-
-            setHeader(cAssump[0]);
+            setHeader(cAssump[select][0]);
         }
-    }, [cAssump])
-    console.log(cAssump);
-
+    }, [select])
+    console.log('select',select);
     return (
         <>
             <Modal show={show} onHide={handleClose}>
@@ -81,7 +78,6 @@ export default function ComponentDet() {
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-
                 </Modal.Footer>
             </Modal>
             <div className="adetDiv">
@@ -103,6 +99,7 @@ export default function ComponentDet() {
                         <Row>
                             <Col xs={12}>
                                 {cAssump.length > 0 ?
+                                select!==null?
                                     <Table responsive hover className='assumpDetTable'>
                                         <thead>
                                             <tr>
@@ -119,7 +116,8 @@ export default function ComponentDet() {
                                         </thead>
                                         <tbody>
                                             {
-                                                cAssump.slice(1).map((val, index) =>
+                                                
+                                                cAssump[select].slice(1).map((val, index) =>
                                                     <tr>
                                                         <td>
                                                             <input type="checkbox" name="" id="" />
@@ -147,6 +145,7 @@ export default function ComponentDet() {
                                             }
                                         </tbody>
                                     </Table>
+                                    :'Select Component From Above'
                                     : 'Browse and Upload File'
                                 }
 

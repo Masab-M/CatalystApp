@@ -8,47 +8,48 @@ import * as XLSX from 'xlsx';
 import { ComponentAssump } from '../../../Context/ProjectComponent';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
+import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 export default function ProjectComponent() {
     let navigate = useNavigate();
-        //toast state and function
-        const [showA, setShowA] = useState(false);
-      
-        const toggleShowA = () => setShowA(!showA);
-    const { files, setfiles, cAssump, setcAssump } = useContext(ComponentAssump)
+    //toast state and function
+    const [showA, setShowA] = useState(false);
+    const [fileName, setfileName] = useState('');
+
+    const toggleShowA = () => setShowA(!showA);
+    const { files, setfiles, cAssump, setcAssump ,select} = useContext(ComponentAssump)
     const [type, setType] = useState(null);
     function getFiles(e) {
-        const file = e.target.files;
-        setfiles(file)
+        const newfile = e.target.files;
+        setfiles([...files, newfile])
+        // uploadFiles();
     }
     function assumpType(e) {
         const { value, name } = e.target;
-        console.log(value);
         setType(value)
     }
     function sendAsumption(e) {
         e.preventDefault();
         let objArray = {}
-        objArray.data = cAssump.slice(1).map((val) => {
+        objArray.data = cAssump[select].slice(1).map((val) => {
             var obj = {};
             val.map((ele, index) => {
-                obj[cAssump[0][index]] = ele.toString();
+                obj[cAssump[select][0][index]] = ele.toString();
             })
             return obj;
         })
-        let component_detail={}
-
+        let component_detail = {}
         component_detail.component_name = e.target[2].value;
         component_detail.component_desc = e.target[3].value;
-        component_detail.component_filename = files[0].name;
-        let id=localStorage.getItem('new_project_id');
+        component_detail.component_filename = files[select][0].name;
+        let id = localStorage.getItem('new_project_id');
         component_detail.project_id = id;
-        objArray.component_detail=component_detail;
-        console.log('Payload',objArray);
+        objArray.component_detail = component_detail;
         let url;
+        console.log(objArray);
         switch (parseInt(type)) {
             case 1:
-                console.log('done');
                 url = 'https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectcarrierexp';
                 cAssumpSend(url, objArray);
                 break;
@@ -67,16 +68,14 @@ export default function ProjectComponent() {
             default:
                 break;
         }
-
+        e.target.reset();
     }
     function cAssumpSend(url, payload) {
-        console.log('call');
         const headers = {
             'Content-Type': 'text/plain'
         };
         const assumpPromise = axios.post(url, payload, { headers });
         Promise.all([assumpPromise]).then((result) => {
-            console.log(result);
             toggleShowA();
             setTimeout(() => {
                 toggleShowA()
@@ -85,38 +84,47 @@ export default function ProjectComponent() {
             console.log(err);
         })
     }
-    function uploadFiles(e) {
-        e.preventDefault()
-        var reader = new FileReader();
-        const f = files[0];
-        reader.onload = async function (e) {
-            var data = e.target.result;
-            let readedData = XLSX.read(data, { type: 'binary' });
-            const wsname = readedData.SheetNames[0];
-            const ws = readedData.Sheets[wsname];
-            /* Convert array to json*/
-            const dataParse = XLSX.utils.sheet_to_json(ws, { header: 1, blankrows: true });
-            setcAssump(dataParse)
-        };
-        reader.readAsBinaryString(f)
-    }
+    useEffect(() => {
+        try {
+            setfileName(files[files.length - 1][0].name);
+        } catch (error) {
+
+        }
+    }, [files])
+    useEffect(() => {
+        if(files.length>0)
+        {
+            var reader = new FileReader();
+            const f = files[files.length-1][0];
+            reader.onload = async function (e) {
+                var data = e.target.result;
+                let readedData = XLSX.read(data, { type: 'binary' });
+                const wsname = readedData.SheetNames[0];
+                const ws = readedData.Sheets[wsname];
+                /* Convert array to json*/
+                const dataParse = XLSX.utils.sheet_to_json(ws, { header: 1, blankrows: true });
+                setcAssump([...cAssump,dataParse])
+            };
+            reader.readAsBinaryString(f)
+        }
+    }, [files])
     return (
         <>
-        <ToastContainer position="bottom-end" className="p-3">
-        <Toast show={showA} onClose={toggleShowA}>
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded me-2"
-              alt=""
-            />
-            <strong className="me-auto">Component Assumptions</strong>
-            <small>Just Now</small>
-          </Toast.Header>
-          <Toast.Body>File is Added</Toast.Body>
-        </Toast>
+            <ToastContainer position="bottom-end" className="p-3">
+                <Toast show={showA} onClose={toggleShowA}>
+                    <Toast.Header>
+                        <img
+                            src="holder.js/20x20?text=%20"
+                            className="rounded me-2"
+                            alt=""
+                        />
+                        <strong className="me-auto">Component Assumptions</strong>
+                        <small>Just Now</small>
+                    </Toast.Header>
+                    <Toast.Body>File is Added</Toast.Body>
+                </Toast>
 
-        </ToastContainer>
+            </ToastContainer>
             <div className='projectDiv'>
                 <div className="projectAssump">
                     <Container fluid>
@@ -129,12 +137,12 @@ export default function ProjectComponent() {
                                     <div className="form-group">
                                         <label htmlFor="aFile">Import Component</label>
                                         <div className="uploadField">
-                                            <input type="file" name="aFile" id="aFile" accept=".xls,.xlsx,.ods,.csv"  onChange={getFiles} required/>
+                                            <input type="file" name="aFile" id="aFile" accept=".xls,.xlsx,.ods,.csv" onChange={getFiles} />
                                             <div className="fileName">
-                                                <span className='uploadName'></span>
+                                                <span className='uploadName'>{fileName}</span>
                                             </div>
                                             <label htmlFor="aFile">Browse</label>
-                                            <button id='uploadAssump' onClick={uploadFiles}>Upload</button>
+                                            <button id='uploadAssump'>Upload</button>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -157,10 +165,9 @@ export default function ProjectComponent() {
                                     </div>
                                     <div className="actbtn">
                                         <button type='submit'>Save</button>
-                                        <button onClick={()=>
-                                           {
+                                        <button onClick={() => {
                                             navigate(`/userOne/dashBoard/ff/generate?request=new_project`)
-                                           }
+                                        }
                                         }>Finish</button>
                                     </div>
                                 </form>

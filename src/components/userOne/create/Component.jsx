@@ -10,6 +10,7 @@ export default function Component() {
   const [files, setfiles] = useState([])
   const [cAssump, setcAssump] = useState([])
   const [project, setproject] = useState('');
+  const [select,setselect]=useState(null)
   const url = 'https://catalystcreatejourney.herokuapp.com'
   const p_list = '/v1/createjourney/getprojectlist'
   const [searchParams] = useSearchParams();
@@ -31,7 +32,7 @@ export default function Component() {
   return (
     <>
       <DashNav srch={false} p_Name={project} />
-      <ComponentAssump.Provider value={{files,setfiles,cAssump,setcAssump}}>
+      <ComponentAssump.Provider value={{files,setfiles,cAssump,setcAssump,select,setselect}}>
         <ProjectComponent />
         <Components />
         <ComponentDet />
