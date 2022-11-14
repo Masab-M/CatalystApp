@@ -47,7 +47,7 @@ function App() {
           <Route path="Project/review" element={<ReviewProject/>} />
           <Route path="ff/generate" element={ <GenerateFF/> } />
           <Route path="ff/view" element={ <ViewFF/> } />
-          <Route path="ff/view/project" element={ <ProjectLevel/> } >
+          <Route path="ff/view/project/:id" element={ <ProjectLevel/> } >
             <Route path="" element={ <Expenditure/> } />
             <Route path="expenditure" element={ <Expenditure/> } />
             <Route path="depreciation" element={ <Depreciation/> } />
@@ -64,7 +64,7 @@ function App() {
             <Route path="cashFlow" element={ <CashFlowC/> } />
           </Route>
           <Route path="ff/view/item" element={ <ItemLevel/> } >
-            <Route path="" element={ <ThreeGData/> } />
+              <Route path="" element={ <ThreeGData/> } />
               <Route path="threedata" element={ <ThreeGData/> } />
             <Route path="threevoice" element={ <ThreeGVoice/> } />
             <Route path="fourdata" element={ <ThreeGVideo/> } />

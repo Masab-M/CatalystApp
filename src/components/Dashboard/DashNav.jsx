@@ -6,6 +6,9 @@ import { FaBell } from 'react-icons/fa'
 import { BsFillCaretDownFill } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
 import './DashNav.css'
+import { useContext } from 'react';
+import { FFContext } from '../../Context/FFContext';
+
 export default function DashNav(props) {
     const isSrch = props.srch;
     const level = props.level;
@@ -42,13 +45,26 @@ export default function DashNav(props) {
     )
 }
 function Level(props) {
+const {setlevel} = useContext(FFContext)
+    const setLevel=(e)=>{
+        const {value}= e.target
+        setlevel(parseInt(value))
+        }
     return <div className="levelText">
-        <span>
-            {props.levelName} Level FF
-        </span>
+        <form action="">
+            <div className="form-group">
+                <select name="" id="" onChange={setLevel}>
+                    <option value="1">Project Level</option>
+                    <option value="2">Component Level</option>
+                    <option value="3">Item Level</option>
+                </select>
+            </div>
+        </form>
     </div>;
 }
+
 function BranchDet(props) {
+    
     return <div className="BranchDet">
         <span className="type">
             Project

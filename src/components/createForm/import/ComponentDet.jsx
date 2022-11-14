@@ -42,7 +42,7 @@ export default function ComponentDet() {
     try {
         var modalData = cAssump[editRecord + 1].map((val, index) =>
             <>
-                <div className="form-group">
+                <div className="form-group" key={index}>
                     <label htmlFor="">{header[index]}</label>
                     <input type="text" defaultValue={val} />
                 </div>
@@ -107,8 +107,8 @@ export default function ComponentDet() {
                                                     <input type="checkbox" name="slctAll" id="slctAll" />
                                                 </th>
                                                 {
-                                                    header.map((val) =>
-                                                        <th>{val}</th>
+                                                    header.map((val,index) =>
+                                                        <th key={index}>{val}</th>
                                                     )
                                                 }
                                                 <th>Action</th>
@@ -118,7 +118,7 @@ export default function ComponentDet() {
                                             {
                                                 
                                                 cAssump[select].slice(1).map((val, index) =>
-                                                    <tr>
+                                                    <tr key={index}>
                                                         <td>
                                                             <input type="checkbox" name="" id="" />
                                                         </td>

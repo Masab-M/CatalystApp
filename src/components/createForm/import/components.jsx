@@ -19,7 +19,7 @@ export default function components() {
                 files.length > 0 ?
                   
                   files.map((file,index)=>
-                    <Col xs={4} onClick={()=>{
+                    <Col key={index} xs={4} onClick={()=>{
                       setselect(index)
                     }}>
                         <div className="singleAssump">

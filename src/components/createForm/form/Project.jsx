@@ -104,8 +104,8 @@ export default function Project() {
                                         Project Status
                                     </label>
                                     <select name="pStatus" id="pStatus">
-                                        {status.map((name) =>
-                                            <option value={name.ProjectStatusType_Id}>{name.ProjectStatusType_Name}</option>
+                                        {status.map((name,index) =>
+                                            <option key={index} value={name.ProjectStatusType_Id}>{name.ProjectStatusType_Name}</option>
                                         )}
                                     </select>
                                 </div>
@@ -114,8 +114,8 @@ export default function Project() {
                                         Project Owner
                                     </label>
                                     <select name="pOwner" id="pOwner">
-                                    {owner.map((name) =>
-                                            <option value={name.ProjectOwner_Id}>{name.ProjectOwner_Name}</option>
+                                    {owner.map((name,index) =>
+                                            <option key={index} value={name.ProjectOwner_Id}>{name.ProjectOwner_Name}</option>
                                         )}
                                     </select>
                                 </div>

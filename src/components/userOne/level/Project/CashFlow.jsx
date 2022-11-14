@@ -1,18 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { useContext } from 'react'
 import { Table } from 'react-bootstrap'
+import { FFContext } from '../../../../Context/FFContext'
 
 export default function CashFlow() {
-  return (
-    <>
-     <div className="levelDiv">
+    const { ProjectLevel } = useContext(FFContext)
+    const [cashflow, setcashflow] = useState(null);
+    useEffect(() => {
+        console.log('change',ProjectLevel);
+        if(ProjectLevel){
+            let obj=ProjectLevel.projectff ? ProjectLevel.projectff.project_cash_flow_performance :ProjectLevel.projectcomponentff ? ProjectLevel.projectcomponentff.component_cash_flow_performance :ProjectLevel.itemff ?  ProjectLevel.itemff.item_cash_flow_performance :null;
+            setcashflow(obj)
+        }
+    }, [ProjectLevel])
+    return (
+        <>
+            <div className="levelDiv">
                 <div className="cshflowTable">
                     <div className="headText">
                         <h3>Cash Flow</h3>
                     </div>
-                    <Table className='cshflw'>
+                    <Table className='cshflw' responsive>
                         <thead>
                             <tr>
-                                <th>Neutral</th>
+                                <th>Name</th>
+                                <th>Remarks</th>
+                                <th>Year 0</th>
                                 <th>Year 1</th>
                                 <th>Year 2</th>
                                 <th>Year 3</th>
@@ -23,28 +37,31 @@ export default function CashFlow() {
                                 <th>Year 8</th>
                                 <th>Year 9</th>
                                 <th>Year 10</th>
-                                <th>Total</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th>Neutral</th>
-                                <td>Year 1</td>
-                                <td>Year 2</td>
-                                <td>Year 3</td>
-                                <td>Year 4</td>
-                                <td>Year 5</td>
-                                <td>Year 6</td>
-                                <td>Year 7</td>
-                                <td>Year 8</td>
-                                <td>Year 9</td>
-                                <td>Year 10</td>
-                                <td>Total</td>
+                        <tbody>{cashflow ? cashflow.map((rec, index) =>
+                            <tr key={index}>
+                                <th>{rec.forecast_name.split('Project')[1]}</th>
+                                <th>{rec.remarks}</th>
+                                <td>{rec.year_0}</td>
+                                <td>{rec.year_1}</td>
+                                <td>{rec.year_2}</td>
+                                <td>{rec.year_3}</td>
+                                <td>{rec.year_4} </td>
+                                <td>{rec.year_5} </td>
+                                <td>{rec.year_6} </td>
+                                <td>{rec.year_7} </td>
+                                <td>{rec.year_8} </td>
+                                <td>{rec.year_9} </td>
+                                <td>{rec.year_10} </td>
                             </tr>
+                        ) : <tr >
+                            <th>Loading</th>
+                        </tr>}
                         </tbody>
                     </Table>
                 </div>
             </div>
-    </>
-  )
+        </>
+    )
 }

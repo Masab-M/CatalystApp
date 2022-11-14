@@ -47,7 +47,7 @@ export default function GenerateFF() {
                     <thead>
                         <tr>
                             <th>Project ID</th>
-                            <th>Project Name</th>
+                            <th>Name</th>
                             <th>Project Created On</th>
                             <th>Project Execution Year</th>
                             <th>Project Owner</th>

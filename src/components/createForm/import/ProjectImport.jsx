@@ -83,8 +83,8 @@ export default function ProjectImport() {
                                         <label htmlFor="slctAssump">Select Projects</label>
                                         <select name="slctAssump" id="slctAssump" required onChange={getid} >
                                             <option value="">Select Project</option>
-                                            {project.projectList.map((val) =>
-                                                <option value={val.Project_Id}>{val.Project_Name}</option>
+                                            {project.projectList.map((val,index) =>
+                                                <option key={index} value={val.Project_Id}>{val.Project_Name}</option>
 
                                             )}
                                         </select>

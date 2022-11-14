@@ -19,7 +19,7 @@ export default function Assump() {
               {
                 assumption.map((val, index) =>
                 Object.keys(assumption[0]).length === 0 ?
-                '': <Col xs={4}>
+                '': <Col xs={4} key={index}>
                  <div className="singleAssump" onClick={()=>{chooseRecord(index)}}>
                    <span className="asumpid">{val.assumption_id || val.depreciationlife_id || val.recurrentexpense_Id}</span>
                    <span className="nAssump">{val.assumption_name || val.depreciationlife_name || val.recurrentexpense_Name}</span>

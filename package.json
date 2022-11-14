@@ -7,6 +7,9 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "server": {
+    "host": true
+  },
   "dependencies": {
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
