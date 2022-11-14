@@ -79,7 +79,7 @@ export default function Project() {
                                     <label htmlFor="pId">
                                         Project ID
                                     </label>
-                                    <input type="text" name="pId" id="pId" />
+                                    <input type="text" name="pId" id="pId"  disabled/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="pName">

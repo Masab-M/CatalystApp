@@ -7,7 +7,7 @@ import axios from 'axios'
 import { useState } from 'react'
 
 export default function ViewFF() {
-  const [projects, setProjects] = useState([])
+  const [projects, setProjects] = useState(null)
   const url = 'http://103.245.193.211:5001'
   const p_list = '/v1/createjourney/getprojectlist'
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function ViewFF() {
                         </tr>
                     </thead>
                     <tbody>
-                      {projects.map((ele,index)=>
+                      {projects ? projects.map((ele,index)=>
                         <tr key={index}>
                         <td>{index+1}</td>
                         <td>{ele.Project_Name}</td>
@@ -52,7 +52,9 @@ export default function ViewFF() {
                           </Link>
                         </td>
                     </tr>                      
-                      )}
+                      ):<div style={{position:'absolute',left:'50%'}}>
+                        Loading Projects
+                      </div> }
 
                     </tbody>
                 </Table>
