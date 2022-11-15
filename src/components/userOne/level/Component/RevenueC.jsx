@@ -13,16 +13,16 @@ export default function RevenueC() {
             <thead>
                 <tr>
                     <th>Items</th>
-                    <th>Year 1</th>
-                    <th>Year 2</th>
-                    <th>Year 3</th>
-                    <th>Year 4</th>
-                    <th>Year 5</th>
-                    <th>Year 6</th>
-                    <th>Year 7</th>
-                    <th>Year 8</th>
-                    <th>Year 9</th>
-                    <th>Year 10</th>
+                    <th>Year1</th>
+                    <th>Year2</th>
+                    <th>Year3</th>
+                    <th>Year4</th>
+                    <th>Year5</th>
+                    <th>Year6</th>
+                    <th>Year7</th>
+                    <th>Year8</th>
+                    <th>Year9</th>
+                    <th>Year10</th>
                     <th>Total</th>
                 </tr>
             </thead>

@@ -2,10 +2,11 @@ import React from 'react'
 import { useState } from 'react';
 import { useContext } from 'react'
 import { Table } from 'react-bootstrap'
+import { CSVDownload, CSVLink } from 'react-csv';
 import { FFContext } from '../../../../Context/FFContext'
 export default function ItemTable() {
     const { itemLevel, setProjectLevel } = useContext(FFContext);
-    const [selected, setselected] = useState(null)
+    const [selected, setselected] = useState(0)
     console.log('item', itemLevel);
     const itemSelect = (index) => {
         setselected(index)
@@ -16,34 +17,47 @@ export default function ItemTable() {
             setProjectLevel(obj)
         }
     }
+    document.onkeydown = checkKey;
+    function checkKey(e) {
+        e = e || window.event;
+        if (e.keyCode == '38') {
+        itemSelect(selected-1)
+        // up arrowselected
+    }
+    else if (e.keyCode == '40') {
+        itemSelect(selected+1)
+        // down arrow
+    }
+}
     return (
         <>
             <div className="levelDiv">
-                <div className="expndtreTable">
+            <CSVLink data={itemLevel.projectcomponentitemff}>Download me</CSVLink>
+                <div className="expndtreTable itemLevelTable">
                     <div className="headText">
                         <h3>Choose Item</h3>
                     </div>
                     <Table className='expenditure' responsive hover>
                         <thead>
                             <tr>
-                                <th>Property ID</th>
+                                <th>Property_ID</th>
                                 <th>latitude</th>
                                 <th>longitude</th>
-                                <th>Payback Period</th>
+                                <th>Payback_Period</th>
                                 <th>NPV</th>
                                 <th>IRR</th>
-                                <th>Component ID</th>
-                                <th>Total Revenue</th>
-                                <th>Total Capex</th>
-                                <th>Total Recurrent Expenses</th>
-                                <th>Carrier Averages Level</th>
-                                <th>Carrier Averages Sub-Level</th>
-                                <th>Givin Working Radius</th>
-                                <th>Actual Working Radius</th>
-                                <th>Service Category</th>
-                                <th>Data Growth Time Segment Name</th>
-                                <th>Data Growth Time Sub-Segment Name</th>
-                                <th>csvoicegrowthtimesegmentname</th>
+                                <th>Component_ID</th>
+                                <th>Total_Revenue</th>
+                                <th>Total_Capex</th>
+                                <th>Total_Recurrent_Expenses</th>
+                                <th>Carrier_Averages_Level</th>
+                                <th>Carrier_Averages Sub-Level</th>
+                                <th>Givin_Working_Radius</th>
+                                <th>Actual_Working_Radius</th>
+                                <th>Service_Category</th>
+                                <th>Data_Growth_Time_Segment_Name</th>
+                                <th>DGTSSN</th>
+                                <th>CS_Voice_Growth_Time_SegmentName</th>
                                 <th>csvoicegrowthtimesubsegmentname</th>
                                 <th>workingdatagrowthrate</th>
                                 <th>workingcsvoicegrowthrate</th>

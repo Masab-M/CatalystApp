@@ -3,7 +3,9 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useContext } from 'react'
 import { Table } from 'react-bootstrap'
+import { CSVLink } from 'react-csv'
 import { FFContext } from '../../../../Context/FFContext'
+import { AiOutlineExport } from 'react-icons/ai';
 
 export default function Expenditure() {
     const { ProjectLevel } = useContext(FFContext)
@@ -21,23 +23,31 @@ export default function Expenditure() {
                 <div className="expndtreTable">
                     <div className="headText">
                         <h3>Expenditure</h3>
+                        <div className="csvFile">
+                        {expenditure ?
+                    <CSVLink data={expenditure}>
+                        <AiOutlineExport/>
+                        Export CSV</CSVLink>
+                    :
+                    ''}
+                        </div>
                     </div>
                     <Table className='expenditure' responsive>
                         <thead>
                             <tr>
                                 <th>Name</th>
                                   
-                                <th>Year 0</th>
-                                <th>Year 1</th>
-                                <th>Year 2</th>
-                                <th>Year 3</th>
-                                <th>Year 4</th>
-                                <th>Year 5</th>
-                                <th>Year 6</th>
-                                <th>Year 7</th>
-                                <th>Year 8</th>
-                                <th>Year 9</th>
-                                <th>Year 10</th>
+                                <th>Year0</th>
+                                <th>Year1</th>
+                                <th>Year2</th>
+                                <th>Year3</th>
+                                <th>Year4</th>
+                                <th>Year5</th>
+                                <th>Year6</th>
+                                <th>Year7</th>
+                                <th>Year8</th>
+                                <th>Year9</th>
+                                <th>Year10</th>
                             </tr>
                         </thead>
                         <tbody>

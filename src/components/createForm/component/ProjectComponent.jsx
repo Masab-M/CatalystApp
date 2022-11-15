@@ -18,7 +18,7 @@ export default function ProjectComponent() {
     const [fileName, setfileName] = useState('');
 
     const toggleShowA = () => setShowA(!showA);
-    const { files, setfiles, cAssump, setcAssump ,select} = useContext(ComponentAssump)
+    const { files, setfiles, cAssump, setcAssump ,select,setselect} = useContext(ComponentAssump)
     const [type, setType] = useState(null);
     function getFiles(e) {
         const newfile = e.target.files;
@@ -104,6 +104,7 @@ export default function ProjectComponent() {
                 /* Convert array to json*/
                 const dataParse = XLSX.utils.sheet_to_json(ws, { header: 1, blankrows: true });
                 setcAssump([...cAssump,dataParse])
+                setselect(files.length-1)
             };
             reader.readAsBinaryString(f)
         }
@@ -133,8 +134,7 @@ export default function ProjectComponent() {
                                 <div className="headText">
                                     <h3>Project Components</h3>
                                 </div>
-                                <form action="" className="assumptions" onSubmit={sendAsumption}>
-                                    <div className="form-group">
+                                <div className="form-group">
                                         <label htmlFor="aFile">Import Component</label>
                                         <div className="uploadField">
                                             <input type="file" name="aFile" id="aFile" accept=".xls,.xlsx,.ods,.csv" onChange={getFiles} />
@@ -145,6 +145,8 @@ export default function ProjectComponent() {
                                             <button id='uploadAssump'>Upload</button>
                                         </div>
                                     </div>
+                                <form action="" className="assumptions" onSubmit={sendAsumption}>
+
                                     <div className="form-group">
                                         <label htmlFor="aName">Component Name</label>
                                         <input type="text" name="aName" id="aName" required />

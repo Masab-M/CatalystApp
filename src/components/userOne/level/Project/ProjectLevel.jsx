@@ -38,16 +38,22 @@ export default function ProjectLevel() {
       case 2:
         setProjectLevel(null)
         setItemLevel(null)
+        setcId(null)
         endpoint = `/v1/viewff/getcomponentlist/${id}`//* ID have to be updated
         changeLevel(endpoint).then((result) => {
           setCatList(result)
+          setcId(result.projectcomponentslist[0].projectcomponent_id)
         })
+
         break;
         case 3:
           setProjectLevel(null)
           endpoint = `/v1/viewff/getcomponentlist/${id}`//* ID have to be updated
+          setcId(null)
           changeLevel(endpoint).then((result) => {
             setCatList(result)
+            setcId(result.projectcomponentslist[0].projectcomponent_id)
+
           })
           break;
       default:

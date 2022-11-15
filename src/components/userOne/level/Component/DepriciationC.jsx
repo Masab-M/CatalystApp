@@ -15,16 +15,16 @@ export default function DepriciationC() {
                                 <th>Items</th>
                                 <th>Life</th>
                                 <th>CAPEX</th>
-                                <th>Year 1</th>
-                                <th>Year 2</th>
-                                <th>Year 3</th>
-                                <th>Year 4</th>
-                                <th>Year 5</th>
-                                <th>Year 6</th>
-                                <th>Year 7</th>
-                                <th>Year 8</th>
-                                <th>Year 9</th>
-                                <th>Year 10</th>
+                                <th>Year1</th>
+                                <th>Year2</th>
+                                <th>Year3</th>
+                                <th>Year4</th>
+                                <th>Year5</th>
+                                <th>Year6</th>
+                                <th>Year7</th>
+                                <th>Year8</th>
+                                <th>Year9</th>
+                                <th>Year10</th>
                                 <th>Total</th>
                             </tr>
                         </thead>
@@ -33,16 +33,16 @@ export default function DepriciationC() {
                                 <th>Neutral</th>
                                 <td>Neutral</td>
                                 <td>Neutral</td>
-                                <td>Year 1</td>
-                                <td>Year 2</td>
-                                <td>Year 3</td>
-                                <td>Year 4</td>
-                                <td>Year 5</td>
-                                <td>Year 6</td>
-                                <td>Year 7</td>
-                                <td>Year 8</td>
-                                <td>Year 9</td>
-                                <td>Year 10</td>
+                                <td>Year1</td>
+                                <td>Year2</td>
+                                <td>Year3</td>
+                                <td>Year4</td>
+                                <td>Year5</td>
+                                <td>Year6</td>
+                                <td>Year7</td>
+                                <td>Year8</td>
+                                <td>Year9</td>
+                                <td>Year10</td>
                                 <td>Total</td>
                             </tr>
                         </tbody>
@@ -59,16 +59,16 @@ export default function DepriciationC() {
                         <thead>
                             <tr>
                                 <th>Items</th>
-                                <th>Year 1</th>
-                                <th>Year 2</th>
-                                <th>Year 3</th>
-                                <th>Year 4</th>
-                                <th>Year 5</th>
-                                <th>Year 6</th>
-                                <th>Year 7</th>
-                                <th>Year 8</th>
-                                <th>Year 9</th>
-                                <th>Year 10</th>
+                                <th>Year1</th>
+                                <th>Year2</th>
+                                <th>Year3</th>
+                                <th>Year4</th>
+                                <th>Year5</th>
+                                <th>Year6</th>
+                                <th>Year7</th>
+                                <th>Year8</th>
+                                <th>Year9</th>
+                                <th>Year10</th>
                                 <th>Total</th>
                             </tr>
                         </thead>

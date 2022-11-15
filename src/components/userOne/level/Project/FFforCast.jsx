@@ -11,7 +11,7 @@ export default function FFforCast() {
   return (
     <>
   <Tabs
-      defaultActiveKey="depreciation"
+      // defaultActiveKey="depreciation"
       id="uncontrolled-tab-example"
       className="otherInfoDet"
     > 

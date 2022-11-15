@@ -60,7 +60,6 @@ export default function ProjectImport() {
             const depPromise=axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptionsdepreciationlife',depList[0],{headers})
             const expPromise=axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptionsrecurrentexpenses',JSON.stringify(expList[0]),{headers})
             Promise.all([assumpPromise,depPromise,expPromise]).then((result)=>{
-
                 navigate(`/userOne/dashBoard/Project/component?name=${name}`)
             }).catch((err)=>{
                 console.log(err);

@@ -41,41 +41,41 @@ function App() {
         <Route path="userOne/login" element={<Login />} />
         <Route path="userOne/dashBoard" element={<CreateProject />}>
           <Route path="Project/create" element={<CreateProjectComponent />} />
-          <Route path="Project/assumption" element={ <Assumption /> } >
+          <Route path="Project/assumption" element={<Assumption />} >
           </Route>
-          <Route path="Project/component" element={ <Component/> } />
-          <Route path="Project/review" element={<ReviewProject/>} />
-          <Route path="ff/generate" element={ <GenerateFF/> } />
-          <Route path="ff/view" element={ <ViewFF/> } />
-          <Route path="ff/view/project/:id" element={ <ProjectLevel/> } >
-            <Route path="" element={ <Expenditure/> } />
-            <Route path="expenditure" element={ <Expenditure/> } />
-            <Route path="depreciation" element={ <Depreciation/> } />
-            <Route path="revenue" element={ <Revenue/> } />
-            <Route path="profitandLoss" element={ <ProfitLoss/> } />
-            <Route path="cashFlow" element={ <CashFlow/> } />
+          <Route path="Project/component" element={<Component />} />
+          <Route path="Project/review" element={<ReviewProject />} />
+          <Route path="ff/generate" element={<GenerateFF />} />
+          <Route path="ff/view" element={<ViewFF />} />
+          <Route path="ff/view/project/:id" element={<ProjectLevel />} >
+            <Route path="" element={<Expenditure />} />
+            <Route path="expenditure" element={<Expenditure />} />
+            <Route path="depreciation" element={<Depreciation />} />
+            <Route path="revenue" element={<Revenue />} />
+            <Route path="profitandLoss" element={<ProfitLoss />} />
+            <Route path="cashFlow" element={<CashFlow />} />
           </Route>
-          <Route path="ff/view/component" element={ <ComponentLevel/> } >
-            <Route path="" element={ <ExpenditureC/> } />
-            <Route path="expenditure" element={ <ExpenditureC/> } />
-            <Route path="depreciation" element={ <DepriciationC/> } />
-            <Route path="revenue" element={ <RevenueC/> } />
-            <Route path="profitandLoss" element={ <ProfitLossC/> } />
-            <Route path="cashFlow" element={ <CashFlowC/> } />
+          <Route path="ff/view/component" element={<ComponentLevel />} >
+            <Route path="" element={<ExpenditureC />} />
+            <Route path="expenditure" element={<ExpenditureC />} />
+            <Route path="depreciation" element={<DepriciationC />} />
+            <Route path="revenue" element={<RevenueC />} />
+            <Route path="profitandLoss" element={<ProfitLossC />} />
+            <Route path="cashFlow" element={<CashFlowC />} />
           </Route>
-          <Route path="ff/view/item" element={ <ItemLevel/> } >
-              <Route path="" element={ <ThreeGData/> } />
-              <Route path="threedata" element={ <ThreeGData/> } />
-            <Route path="threevoice" element={ <ThreeGVoice/> } />
-            <Route path="fourdata" element={ <ThreeGVideo/> } />
-            <Route path="fourvoice" element={ <FourGData/> } />
-            <Route path="fivedata" element={ <FiveGData/> } />
+          <Route path="ff/view/item" element={<ItemLevel />} >
+            <Route path="" element={<ThreeGData />} />
+            <Route path="threedata" element={<ThreeGData />} />
+            <Route path="threevoice" element={<ThreeGVoice />} />
+            <Route path="fourdata" element={<ThreeGVideo />} />
+            <Route path="fourvoice" element={<FourGData />} />
+            <Route path="fivedata" element={<FiveGData />} />
           </Route>
         </Route>
-        <Route path="usertwo/login" element={ <Login/>} />
-        <Route path="usertwo/dashboard" element={ <DashBoardTwo/> }>
-          <Route path="Project/view" element={ <ViewProject/> }/>
-          <Route path="ff/view" element={ <ViewFF/> } />
+        <Route path="usertwo/login" element={<Login />} />
+        <Route path="usertwo/dashboard" element={<DashBoardTwo />}>
+          <Route path="Project/view" element={<ViewProject />} />
+          <Route path="ff/view" element={<ViewFF />} />
         </Route>
       </Routes>
     </>

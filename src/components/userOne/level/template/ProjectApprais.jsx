@@ -25,14 +25,14 @@ export default function ProjectApprais() {
             <tbody>
                 <tr>
                     <th>Neutral</th>
-                    <td>Year 1</td>
-                    <td>Year 2</td>
-                    <td>Year 3</td>
-                    <td>Year 4</td>
-                    <td>Year 5</td>
-                    <td>Year 6</td>
-                    <td>Year 7</td>
-                    <td>Year 7</td>
+                    <td>Year1</td>
+                    <td>Year2</td>
+                    <td>Year3</td>
+                    <td>Year4</td>
+                    <td>Year5</td>
+                    <td>Year6</td>
+                    <td>Year7</td>
+                    <td>Year7</td>
                 </tr>
             </tbody>
         </Table>
