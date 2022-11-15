@@ -142,7 +142,6 @@ export default function ProjectComponent() {
                                                 <span className='uploadName'>{fileName}</span>
                                             </div>
                                             <label htmlFor="aFile">Browse</label>
-                                            <button id='uploadAssump'>Upload</button>
                                         </div>
                                     </div>
                                 <form action="" className="assumptions" onSubmit={sendAsumption}>

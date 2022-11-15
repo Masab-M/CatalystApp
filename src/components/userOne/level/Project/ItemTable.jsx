@@ -19,20 +19,26 @@ export default function ItemTable() {
     }
     document.onkeydown = checkKey;
     function checkKey(e) {
+
         e = e || window.event;
         if (e.keyCode == '38') {
-        itemSelect(selected-1)
+            if(!selected<=0){
+                itemSelect(selected-1)
+            }
         // up arrowselected
     }
     else if (e.keyCode == '40') {
-        itemSelect(selected+1)
+        if(selected<itemLevel.projectcomponentitemff.length-1)
+        {
+            itemSelect(selected+1)
+
+        }
         // down arrow
     }
 }
     return (
         <>
             <div className="levelDiv">
-            <CSVLink data={itemLevel.projectcomponentitemff}>Download me</CSVLink>
                 <div className="expndtreTable itemLevelTable">
                     <div className="headText">
                         <h3>Choose Item</h3>
