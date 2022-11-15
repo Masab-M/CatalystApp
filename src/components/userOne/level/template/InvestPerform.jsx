@@ -32,7 +32,7 @@ export default function InvestPerform() {
                                         </div>
                                         <div className="ValueInvst">
                                             <span>{
-                                            investP.paybackperiod
+                                            investP.paybackperiod.toLocaleString()
                                             }</span>
                                         </div>
                                     </div>
@@ -45,7 +45,7 @@ export default function InvestPerform() {
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
-                                            <span>{investP.totalrecurrentexpenses}</span>
+                                            <span>{investP.totalrecurrentexpenses.toLocaleString()}</span>
                                         </div>
                                     </div>
                                 </Col>
@@ -58,7 +58,7 @@ export default function InvestPerform() {
                                         </div>
                                         <div className="ValueInvst">
                                             <span>{
-                                            investP.totalrevenue
+                                            investP.totalrevenue.toLocaleString()
                                             }</span>
                                         </div>
                                     </div>
@@ -71,7 +71,7 @@ export default function InvestPerform() {
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
-                                            <span>{investP.totalcapex }</span>
+                                            <span>{investP.totalcapex.toLocaleString()}</span>
                                         </div>
                                     </div>
                                 </Col>
@@ -83,7 +83,9 @@ export default function InvestPerform() {
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
-                                            <span>{investP.irr}</span>
+                                            {/* <span>{(investP.irr*100).toString().slice(0,5)}%</span> */}
+                                            <span>{(investP.irr*100).toString().split('.')[0]+'.'+(investP.irr*100).toString().split('.')[1].slice(0,2)}%</span>
+                                            {/* <span>{Number(investP.irr/100).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2})}</span> */}
                                         </div>
                                     </div>
                                 </Col>
@@ -95,7 +97,7 @@ export default function InvestPerform() {
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
-                                            <span>{investP.npv}</span>
+                                            <span>{investP.npv.toLocaleString()}</span>
                                         </div>
                                     </div>
                                 </Col>

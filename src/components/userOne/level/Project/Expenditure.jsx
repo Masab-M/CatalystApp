@@ -26,7 +26,7 @@ export default function Expenditure() {
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Remarks</th>
+                                  
                                 <th>Year 0</th>
                                 <th>Year 1</th>
                                 <th>Year 2</th>
@@ -43,19 +43,18 @@ export default function Expenditure() {
                         <tbody>
                             {expenditure ? expenditure.map((rec, index) =>
                                 <tr key={index}>
-                                    <th>{rec.forecast_name.split('Project')[1]}</th>
-                                    <th>{rec.remarks}</th>
-                                    <td>{rec.year_0}</td>
-                                    <td>{rec.year_1}</td>
-                                    <td>{rec.year_2}</td>
-                                    <td>{rec.year_3}</td>
-                                    <td>{rec.year_4}</td>
-                                    <td>{rec.year_5}</td>
-                                    <td>{rec.year_6}</td>
-                                    <td>{rec.year_7}</td>
-                                    <td>{rec.year_8}</td>
-                                    <td>{rec.year_9}</td>
-                                    <td>{rec.year_10}</td>
+                                    <th>{rec.forecast_name }</th>
+                                    <td>{Math.round(rec.year_0).toLocaleString()}</td>
+                                    <td>{Math.round(rec.year_1).toLocaleString()}</td>
+                                    <td>{Math.round(rec.year_2).toLocaleString()}</td>
+                                    <td>{Math.round(rec.year_3).toLocaleString()}</td>
+                                    <td>{Math.round(rec.year_4).toLocaleString()}</td>
+                                    <td>{Math.round(rec.year_5).toLocaleString()}</td>
+                                    <td>{Math.round(rec.year_6).toLocaleString()}</td>
+                                    <td>{Math.round(rec.year_7).toLocaleString()}</td>
+                                    <td>{Math.round(rec.year_8).toLocaleString()}</td>
+                                    <td>{Math.round(rec.year_9).toLocaleString()}</td>
+                                    <td>{Math.round(rec.year_10).toLocaleString()}</td>
                                 </tr>
                             ) :<tr >
                             <th>Loading</th>

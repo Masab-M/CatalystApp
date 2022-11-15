@@ -9,6 +9,10 @@ import { useEffect } from 'react';
 export default function Project() {
     const [status, setstatus] = useState([])
     const [owner, setowner] = useState([])
+    var curr = new Date();
+    curr.setDate(curr.getDate());
+    var Defaultdate = curr.toISOString().substring(0, 10);
+    console.log('date',Defaultdate);
     const url = 'https://catalystcreatejourney.herokuapp.com'
     const statusEP = '/v1/createjourney/getprojectstatustypes';
     const ownerEP = '/v1/createjourney/getprojectownerlist';
@@ -26,15 +30,15 @@ export default function Project() {
     let navigate = useNavigate();
     const hello = (event) => {
         event.preventDefault();
-        const P_name=event.target[0].value
-        const P_desc=event.target[1].value
-        const P_id=event.target[2].value
-        const P_date=event.target[3].value
-        const P_year=event.target[4].value
-        const P_ver=event.target[5].value
-        const P_status=event.target[6].value
-        const P_owner=event.target[7].value
-        const p_newPayload = { 
+        const P_name = event.target[0].value
+        const P_desc = event.target[1].value
+        const P_id = event.target[2].value
+        const P_date = event.target[3].value
+        const P_year = event.target[4].value
+        const P_ver = event.target[5].value
+        const P_status = event.target[6].value
+        const P_owner = event.target[7].value
+        const p_newPayload = {
             "Project_Name": P_name,
             "Project_Desc": P_desc,
             "Project_Create_Date": P_date,
@@ -42,15 +46,15 @@ export default function Project() {
             "Project_StatusType_Id": P_status,
             "Project_Owner_Id": P_owner,
             "Project_version": P_ver,
-             };
+        };
         const myJSON = JSON.stringify(p_newPayload);
-        axios.post(url+newProjectEP, myJSON)
-        .then(function (response) {
-            navigate(`/userOne/dashBoard/Project/assumption?name=${P_name}&id=${P_id}`, { replace: true });
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        axios.post(url + newProjectEP, myJSON)
+            .then(function (response) {
+                navigate(`/userOne/dashBoard/Project/assumption?name=${P_name}&id=${P_id}`, { replace: true });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     };
     return (
         <div className="ProjectForm">
@@ -79,13 +83,13 @@ export default function Project() {
                                     <label htmlFor="pId">
                                         Project ID
                                     </label>
-                                    <input type="text" name="pId" id="pId"  disabled/>
+                                    <input type="text" name="pId" id="pId" disabled />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="pName">
                                         Project Created On
                                     </label>
-                                    <input type="Date" name="pName" id="pName" />
+                                    <input type="Date" name="pName" id="pName" defaultValue={Defaultdate} />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="pExecYear">
@@ -104,7 +108,7 @@ export default function Project() {
                                         Project Status
                                     </label>
                                     <select name="pStatus" id="pStatus">
-                                        {status.map((name,index) =>
+                                        {status.map((name, index) =>
                                             <option key={index} value={name.ProjectStatusType_Id}>{name.ProjectStatusType_Name}</option>
                                         )}
                                     </select>
@@ -114,7 +118,7 @@ export default function Project() {
                                         Project Owner
                                     </label>
                                     <select name="pOwner" id="pOwner">
-                                    {owner.map((name,index) =>
+                                        {owner.map((name, index) =>
                                             <option key={index} value={name.ProjectOwner_Id}>{name.ProjectOwner_Name}</option>
                                         )}
                                     </select>

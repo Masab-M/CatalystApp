@@ -22,7 +22,6 @@ export default function ViewFF() {
         console.log(err);
     })
   }, [])
-  
   return (
     <>
     <DashNav srch={true} />
@@ -31,10 +30,9 @@ export default function ViewFF() {
                     <thead>
                         <tr>
                             <th>Project ID</th>
-                            <th style={{width:'100px'}}>Name</th>
+                            <th style={{width:'400px'}}>Name</th>
                             <th>Project Created On</th>
                             <th>Project Execution Year</th>
-                            <th>Project Owner</th>
                             <th>View</th>
                         </tr>
                     </thead>
@@ -45,10 +43,9 @@ export default function ViewFF() {
                         <td>{ele.Project_Name}</td>
                         <td>{ele.Project_Create_date.split('T')[0]}</td>
                         <td>{ele.Project_Deployment_Year}</td>
-                        <td>{ele.Project_Owner_Id}</td>
-                        <td>
+                        <td style={{width:'220px'}}>
                           <Link className='viewBtn plvl' to={`project/${ele.Project_Id}`}>
-                          Project level
+                          View Financial Feasibility
                           </Link>
                         </td>
                     </tr>                      

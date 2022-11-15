@@ -96,3 +96,16 @@ ul.otherInfoDet.nav.nav-tabs li button {
 .levelDiv tbody td {
   padding: 15px !important;
 } */
+.headInvst h5 {font-size: 16px;text-transform: capitalize;}
+
+.ProjectInvst {
+    display: flex;
+}
+
+.headInvst {
+    flex: 1;
+}
+
+.ValueInvst span {
+    opacity: 0.9;
+}
