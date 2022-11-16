@@ -15,7 +15,7 @@ export default function Project() {
     curr.setDate(curr.getDate());
     var Defaultdate = curr.toISOString().substring(0, 10);
     console.log('date', Defaultdate);
-    const url = 'https://catalystcreatejourney.herokuapp.com'
+    const url = 'http://103.245.193.211:5001'
     const statusEP = '/v1/createjourney/getprojectstatustypes';
     const ownerEP = '/v1/createjourney/getprojectownerlist';
     const newProjectEP = '/v1/createjourney/createnewproject';

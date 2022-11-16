@@ -56,9 +56,9 @@ export default function ProjectImport() {
             depList[0][element] = String(depList[0][element])
         });
 
-            const assumpPromise=axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptions',assumptionList, {headers});
-            const depPromise=axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptionsdepreciationlife',depList[0],{headers})
-            const expPromise=axios.post('https://catalystcreatejourney.herokuapp.com/v1/createjourney/insertprojectassumptionsrecurrentexpenses',JSON.stringify(expList[0]),{headers})
+            const assumpPromise=axios.post('http://103.245.193.211:5001v1/createjourney/insertprojectassumptions',assumptionList, {headers});
+            const depPromise=axios.post('http://103.245.193.211:5001v1/createjourney/insertprojectassumptionsdepreciationlife',depList[0],{headers})
+            const expPromise=axios.post('http://103.245.193.211:5001v1/createjourney/insertprojectassumptionsrecurrentexpenses',JSON.stringify(expList[0]),{headers})
             Promise.all([assumpPromise,depPromise,expPromise]).then((result)=>{
                 navigate(`/userOne/dashBoard/Project/component?name=${name}`)
             }).catch((err)=>{

@@ -7,7 +7,7 @@ import Import from './Import';
 
 export default function Assumption() {
   const [project, setproject] = useState('');
-  const url = 'https://catalystcreatejourney.herokuapp.com'
+  const url = 'http://103.245.193.211:5001'
   const p_list = '/v1/createjourney/getprojectlist'
   const [searchParams] = useSearchParams();
   const name = searchParams.get('name')

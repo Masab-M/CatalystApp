@@ -16,7 +16,7 @@ export default function Import() {
     {}
   ])
   useEffect(() => {
-    const projects = axios.get('https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectlist')
+    const projects = axios.get('http://103.245.193.211:5001v1/createjourney/getprojectlist')
     Promise.all([projects]).then((result) => {
       const projectlist = result[0].data;
       setproject(projectlist)
@@ -27,9 +27,9 @@ export default function Import() {
   useLayoutEffect(() => {
     if(id!==null)
     {
-      const assumption = axios.get(`https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptions/${id}`)
-      const depreication = axios.get(`https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptionsDepreciationLife/${id}`)
-      const expense = axios.get(`https://catalystcreatejourney.herokuapp.com/v1/createjourney/getprojectassumptionsRecurrentExpenses/${id}`)
+      const assumption = axios.get(`http://103.245.193.211:5001v1/createjourney/getprojectassumptions/${id}`)
+      const depreication = axios.get(`http://103.245.193.211:5001v1/createjourney/getprojectassumptionsDepreciationLife/${id}`)
+      const expense = axios.get(`http://103.245.193.211:5001v1/createjourney/getprojectassumptionsRecurrentExpenses/${id}`)
       Promise.all([assumption, depreication, expense]).then((result) => {
 
         const assumptions = result[0].data;
