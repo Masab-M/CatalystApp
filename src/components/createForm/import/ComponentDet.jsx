@@ -21,7 +21,6 @@ export default function ComponentDet() {
         e.preventDefault();
         let newArray = [];
         header.map((val, index) => {
-            console.log(e.target[index].value,cAssump[editRecord+1]);
             try {
                 newArray.push(e.target[index].value);
             } catch (error) {
@@ -58,7 +57,6 @@ export default function ComponentDet() {
             setHeader(cAssump[select][0]);
         }
     }, [select])
-    console.log('select',select);
     return (
         <>
             <Modal show={show} onHide={handleClose}>

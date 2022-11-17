@@ -9,7 +9,6 @@ export default function Revenue() {
     const {ProjectLevel} = useContext(FFContext)
     const [revenue, setRevenue] = useState(null);
     useEffect(() => {
-        console.log('change',ProjectLevel);
         if(ProjectLevel){
             let obj=ProjectLevel.projectff ? ProjectLevel.projectff.project_revenues :ProjectLevel.projectcomponentff ? ProjectLevel.projectcomponentff.component_revenues :ProjectLevel.itemff ?  ProjectLevel.itemff.item_revenues :null;
             setRevenue(obj)

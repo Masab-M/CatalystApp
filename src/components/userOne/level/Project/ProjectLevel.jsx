@@ -17,6 +17,7 @@ export default function ProjectLevel() {
   const [projectname, setprojectname] = useState(null)//* project name 
   const [catList, setCatList] = useState(null)//*category List for Component and Item Level
   const [level, setlevel] = useState(1) //* three Project Level 
+  const [selected, setselected] = useState(0)
   let { id } = useParams();// *ID
   const url = 'http://103.245.193.211:5002'
   const changeLevel = async (endpoint) => {
@@ -63,10 +64,11 @@ export default function ProjectLevel() {
   useEffect(() => {
     if (cId) {
       if(level===3){
-        console.log('item');
         const i_Level = `/v1/viewff/getprojectcomponentitemff/${id}/${cId}`//* ID have to be updated with 2
+        console.log(i_Level);
         changeLevel(i_Level).then((result) => {
           setItemLevel(result)
+          
         })
       }
       else{
@@ -79,7 +81,7 @@ export default function ProjectLevel() {
   }, [cId])
   return (
     <>
-      <FFContext.Provider value={{ ProjectLevel, setlevel, catList, setcId,itemLevel,setProjectLevel}}>
+      <FFContext.Provider value={{selected, setselected, ProjectLevel, setlevel, catList, setcId,itemLevel,setProjectLevel}}>
         <DashNav level='Project' p_Name={projectname} />
         {catList ? <SelectComponent /> : ''}
         {level!==3 ? <InvestPerform />:'' } 

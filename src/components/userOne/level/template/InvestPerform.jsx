@@ -12,7 +12,6 @@ export default function InvestPerform() {
             setinvestP(obj)
         }
     }, [ProjectLevel])
-    console.log(investP);
         return (
         <>
             <div className="levelDiv">

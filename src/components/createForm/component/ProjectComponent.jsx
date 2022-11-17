@@ -47,7 +47,6 @@ export default function ProjectComponent() {
         component_detail.project_id = id;
         objArray.component_detail = component_detail;
         let url;
-        console.log(objArray);
         switch (parseInt(type)) {
             case 1:
                 url = 'http://103.245.193.211:5001/v1/createjourney/insertprojectcarrierexp';

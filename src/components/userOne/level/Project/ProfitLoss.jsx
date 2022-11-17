@@ -9,7 +9,6 @@ export default function ProfitLoss() {
     const { ProjectLevel } = useContext(FFContext)
     const [profitloss, setprofitloss] = useState(null);
     useEffect(() => {
-        console.log('change',ProjectLevel);
         if(ProjectLevel){
             let obj=ProjectLevel.projectff ? ProjectLevel.projectff.project_profit_and_loss :ProjectLevel.projectcomponentff ? ProjectLevel.projectcomponentff.component_profit_and_loss :ProjectLevel.itemff ?  ProjectLevel.itemff.item_profit_and_loss :null;
             setprofitloss(obj)

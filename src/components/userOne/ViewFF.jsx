@@ -16,7 +16,6 @@ export default function ViewFF() {
         const listObj = result[0].data;
         const p_List = listObj.projectList
         setProjects(p_List)
-        console.log(p_List);
        
     }).catch((err) => {
         console.log(err);

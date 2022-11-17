@@ -11,7 +11,6 @@ export default function Expenditure() {
     const { ProjectLevel } = useContext(FFContext)
     const [expenditure, setExpenditure] = useState(null);
     useEffect(() => {
-        console.log('change', ProjectLevel);
         if (ProjectLevel) {
             let obj = ProjectLevel.projectff ? ProjectLevel.projectff.project_expenditure : ProjectLevel.projectcomponentff ? ProjectLevel.projectcomponentff.component_expenditure : ProjectLevel.itemff ?  ProjectLevel.itemff.item_expenditure :null;
             setExpenditure(obj)

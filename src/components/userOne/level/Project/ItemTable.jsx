@@ -1,40 +1,47 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useRef } from 'react';
 import { useContext } from 'react'
-import { Table } from 'react-bootstrap'
-import { CSVDownload, CSVLink } from 'react-csv';
+import {  CSVLink } from 'react-csv';
 import DataTable from 'react-data-table-component';
+import { AiOutlineExport } from 'react-icons/ai';
+
 import { FFContext } from '../../../../Context/FFContext'
 export default function ItemTable() {
-    const { itemLevel, setProjectLevel } = useContext(FFContext);
-    const [selected, setselected] = useState(0)
-    const tableSelect = useRef(null)
-    const itemSelect = (index) => {
+    const { itemLevel, setProjectLevel,selected, setselected } = useContext(FFContext);
+    const [filterText, setFilterText] = useState('');
+    
+    var obj_arr_appended = itemLevel.projectcomponentitemff.map(function(currentValue, Index) {
+        currentValue.SERIAL_NO = Index
+        return currentValue
+     })
+    const filteredItems = obj_arr_appended.filter(
+        row => row.property_id && row.property_id.toLowerCase().includes(filterText.toLowerCase()),
+    );
+    const itemSelect = (e) => {
+        const index = e.SERIAL_NO || e.SERIAL_NO===0 ? e.SERIAL_NO:e ;
+        console.log(index);
         setselected(index)
         if (itemLevel) {
             let obj = {};
             obj.itemff = itemLevel.projectcomponentitemff[index]
-            console.log(obj);
             setProjectLevel(obj)
         }
     }
+    
     document.onkeydown = checkKey;
     function checkKey(e) {
-
         e = e || window.event;
         if (e.keyCode == '38') {
             e.preventDefault()
-            if (!selected <= 0) {
+            if (selected > 0) {
                 itemSelect(selected - 1)
             }
             // up arrowselected
         }
         else if (e.keyCode == '40') {
             e.preventDefault()
-            if (selected < itemLevel.projectcomponentitemff.length - 1) {
-
+            if (selected < itemLevel.projectcomponentitemff.length-1) {
                 itemSelect(selected + 1)
 
             }
@@ -42,6 +49,11 @@ export default function ItemTable() {
         }
     }
     const columns = [
+        {
+            name: 'ID',
+            selector: (row, index) => index + 1,
+            sortable: true,
+        },
         {
             name: 'Property_ID',
             selector: row => row.property_id,
@@ -67,7 +79,7 @@ export default function ItemTable() {
             sortable: false,
         }, {
             name: 'IRR',
-            selector: row => (row.irr * 100).toString().split('.')[0] + '.' + (row.irr * 100).toString().split('.')[1].slice(0, 2) + '%',
+            selector: row => (row.irr * 100).toString().split('.')[0] + '%',
             sortable: false,
         }, {
             name: 'Component_ID',
@@ -204,12 +216,46 @@ export default function ItemTable() {
             sortable: false,
         },
     ];
+    const subHeaderComponentMemo = React.useMemo(() => {
+        const handleClear = () => {
+            if (filterText) {
+                setFilterText('');
+            }
+        };
+
+        return (
+            <>
+                <div className="SearchRows">
+                    <input
+                        id="search"
+                        type="text"
+                        placeholder="Property ID"
+                        aria-label="Search Input"
+                        value={filterText}
+                        onChange={e => setFilterText(e.target.value)}
+                    />
+                    <button type="button" onClick={handleClear}>
+                        X
+                    </button>
+                </div>
+
+            </>
+        );
+    }, [filterText]);
     return (
         <>
             <div className="levelDiv">
                 <div className="expndtreTable itemLevelTable">
                     <div className="headText">
                         <h3>Choose Item</h3>
+                        <div className="csvFile">
+                            {itemLevel ?
+                                <CSVLink data={itemLevel.projectcomponentitemff}>
+                                    <AiOutlineExport />
+                                    Export CSV</CSVLink>
+                                :
+                                ''}
+                        </div>
                     </div>
                     {/* <Table className='expenditure' responsive hover>
                         <thead>
@@ -301,7 +347,7 @@ export default function ItemTable() {
                             </tr>}
                         </tbody>
                     </Table> */}
-                    <DataTable columns={columns} ref={tableSelect} data={itemLevel.projectcomponentitemff} />
+                    <DataTable subHeader subHeaderComponent={subHeaderComponentMemo} onRowClicked={(e) => { itemSelect(e) }} columns={columns} data={filteredItems} />
                 </div>
             </div>
         </>

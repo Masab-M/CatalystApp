@@ -14,7 +14,6 @@ export default function Project() {
     var curr = new Date();
     curr.setDate(curr.getDate());
     var Defaultdate = curr.toISOString().substring(0, 10);
-    console.log('date', Defaultdate);
     const url = 'http://103.245.193.211:5001'
     const statusEP = '/v1/createjourney/getprojectstatustypes';
     const ownerEP = '/v1/createjourney/getprojectownerlist';
@@ -28,7 +27,6 @@ export default function Project() {
             const statusObj = result[0].data
             const ownerObj = result[1].data;
             const listobj = result[2].data;
-            console.log(result[2].data);
             setstatus(statusObj.projectStatusTypes);
             setowner(ownerObj.projectOwnerList);
             setPList(listobj.projectList)

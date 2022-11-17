@@ -10,7 +10,6 @@ export default function CashFlow() {
     const { ProjectLevel } = useContext(FFContext)
     const [cashflow, setcashflow] = useState(null);
     useEffect(() => {
-        console.log('change', ProjectLevel);
         if (ProjectLevel) {
             let obj = ProjectLevel.projectff ? ProjectLevel.projectff.project_cash_flow_performance : ProjectLevel.projectcomponentff ? ProjectLevel.projectcomponentff.component_cash_flow_performance : ProjectLevel.itemff ? ProjectLevel.itemff.item_cash_flow_performance : null;
             setcashflow(obj)
