@@ -29,10 +29,11 @@ export default function ProjectLevel() {
     let endpoint = '';
     switch (level) {
       case 1:
+        setCatList(null)
+        setItemLevel(null)
         endpoint = `/v1/viewff/getprojectff/${id}`//* ID have to be updated
         changeLevel(endpoint).then((result) => {
           setProjectLevel(result)
-          setCatList(null)
           setprojectname(result.projectff.project_name)
         })
         break;
