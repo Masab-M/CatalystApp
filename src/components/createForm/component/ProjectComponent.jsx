@@ -50,19 +50,19 @@ export default function ProjectComponent() {
         console.log(objArray);
         switch (parseInt(type)) {
             case 1:
-                url = 'http://103.245.193.211:5001v1/createjourney/insertprojectcarrierexp';
+                url = 'http://103.245.193.211:5001/v1/createjourney/insertprojectcarrierexp';
                 cAssumpSend(url, objArray);
                 break;
             case 2:
-                url = 'http://103.245.193.211:5001v1/createjourney/insertprojectbandexp';
+                url = 'http://103.245.193.211:5001/v1/createjourney/insertprojectbandexp';
                 cAssumpSend(url, objArray);
                 break;
             case 3:
-                url = 'http://103.245.193.211:5001v1/createjourney/insertprojecttechsitesexp';
+                url = 'http://103.245.193.211:5001/v1/createjourney/insertprojecttechsitesexp';
                 cAssumpSend(url, objArray);
                 break;
             case 4:
-                url = 'http://103.245.193.211:5001v1/createjourney/insertprojectradiolocexp';
+                url = 'http://103.245.193.211:5001/v1/createjourney/insertprojectradiolocexp';
                 cAssumpSend(url, objArray);
                 break;
             default:

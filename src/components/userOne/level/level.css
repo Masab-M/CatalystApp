@@ -11,6 +11,11 @@
 .levelDiv th,
 .levelDiv td {
   font-size: 14px;
+    white-space: nowrap;
+
+}
+.table>:not(caption)>*>*{
+  padding: 0px .5rem !important;
 }
 tr.visit {
   background-color: #e3e3e3;
@@ -65,7 +70,7 @@ ul.otherInfoDet.nav.nav-tabs li {
   font-weight: 500;
 }
 .itemLevelTable .table-responsive {
-  height: 116px;
+  height: 150px;
 }
 ul.otherInfoDet.nav.nav-tabs li button.nav-link.active{
   background-color: var(--primary);
@@ -91,7 +96,11 @@ ul.otherInfoDet.nav.nav-tabs li button.nav-link:focus{
 
 ul.otherInfoDet.nav.nav-tabs li button {
   display: block;
-  padding: 15px 50px;
+  text-transform: capitalize;
+  font-size: 18px;
+  padding: 7px 40px;
+  color: black;
+
   -webkit-transform: skew(20deg) !important;
   -moz-transform: skew(20deg) !important;
   -o-transform: skew(20deg) !important;
@@ -99,7 +108,7 @@ ul.otherInfoDet.nav.nav-tabs li button {
 }
 
 .levelDiv thead th {
-  padding: 20px 15px !important;
+  padding: 6px 8px !important;
 }
 
 /* .levelDiv tbody th,

@@ -61,7 +61,7 @@ export default function Project() {
                 "Project_Name": P_name,
                 "Project_Desc": P_desc,
                 "Project_Create_Date": P_date,
-                "Project_Deployemnt_Year": P_year,
+                "Project_Deployment_Year": P_year,
                 "Project_StatusType_Id": P_status,
                 "Project_Owner_Id": P_owner,
                 "Project_version": P_ver,

@@ -1,13 +1,16 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { useState } from 'react';
+import { useRef } from 'react';
 import { useContext } from 'react'
 import { Table } from 'react-bootstrap'
 import { CSVDownload, CSVLink } from 'react-csv';
+import DataTable from 'react-data-table-component';
 import { FFContext } from '../../../../Context/FFContext'
 export default function ItemTable() {
     const { itemLevel, setProjectLevel } = useContext(FFContext);
     const [selected, setselected] = useState(0)
-    console.log('item', itemLevel);
+    const tableSelect = useRef(null)
     const itemSelect = (index) => {
         setselected(index)
         if (itemLevel) {
@@ -22,20 +25,185 @@ export default function ItemTable() {
 
         e = e || window.event;
         if (e.keyCode == '38') {
-            if(!selected<=0){
-                itemSelect(selected-1)
+            e.preventDefault()
+            if (!selected <= 0) {
+                itemSelect(selected - 1)
             }
-        // up arrowselected
-    }
-    else if (e.keyCode == '40') {
-        if(selected<itemLevel.projectcomponentitemff.length-1)
-        {
-            itemSelect(selected+1)
-
+            // up arrowselected
         }
-        // down arrow
+        else if (e.keyCode == '40') {
+            e.preventDefault()
+            if (selected < itemLevel.projectcomponentitemff.length - 1) {
+
+                itemSelect(selected + 1)
+
+            }
+            // down arrow
+        }
     }
-}
+    const columns = [
+        {
+            name: 'Property_ID',
+            selector: row => row.property_id,
+            sortable: true,
+        },
+        {
+            name: 'latitude',
+            selector: row => row.latitude,
+            sortable: false,
+        },
+        {
+            name: 'longitude',
+            selector: row => row.longitude,
+            sortable: false,
+        },
+        {
+            name: 'Payback_Period',
+            selector: row => row.paybackperiod.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'NPV',
+            selector: row => row.npv.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'IRR',
+            selector: row => (row.irr * 100).toString().split('.')[0] + '.' + (row.irr * 100).toString().split('.')[1].slice(0, 2) + '%',
+            sortable: false,
+        }, {
+            name: 'Component_ID',
+            selector: row => row.projectcomponent_id.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'Total_Recurrent_Expenses',
+            selector: row => row.totalrevenue.toLocaleString(),
+            sortable: false,
+        },
+        {
+            name: 'Total_Capex',
+            selector: row => row.totalcapex.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'Total_Recurrent_Expenses',
+            selector: row => row.totalrecurrentexpenses.toLocaleString(),
+            sortable: false,
+        },
+        {
+            name: 'Carrier_Averages_Level',
+            selector: row => row.carrieraverageslevel.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'Carrier_Averages_Sub-Level',
+            selector: row => row.carrieraveragessublevel.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'Givin_Working_Radius',
+            selector: row => row.givinworkingradius.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'Actual_Working_Radius',
+            selector: row => row.actualworkingradius.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'Service_Category',
+            selector: row => row.servicecategory.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'Data_Growth_Time_Segment_Name',
+            selector: row => row.datagrowthtimesegmentname.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'DGTSSN',
+            selector: row => row.datagrowthtimesubsegmentname.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'CS_Voice_Growth_Time_SegmentName',
+            selector: row => row.csvoicegrowthtimesegmentname.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'csvoicegrowthtimesubsegmentname',
+            selector: row => row.csvoicegrowthtimesubsegmentname.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'workingdatagrowthrate',
+            selector: row => row.workingdatagrowthrate.toLocaleString(),
+            sortable: false,
+        },
+        {
+            name: 'workingcsvoicegrowthrate',
+            selector: row => row.workingcsvoicegrowthrate.toLocaleString(),
+            sortable: false,
+        },
+        {
+            name: 'lm_avgdailytotdatamb_mobile',
+            selector: row => row.lm_avgdailytotdatamb_mobile.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'lm_avgdailytotvoicemin',
+            selector: row => row.lm_avgdailytotvoicemin.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'lm_qci8_data',
+            selector: row => row.lm_qci8_data.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'workingdataunitrate',
+            selector: row => row.workingdataunitrate.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'workingcsvoiceunitrate',
+            selector: row => row.workingcsvoiceunitrate.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'unitratedate',
+            selector: row => row.unitratedate.split('T')[0],
+            sortable: false,
+        }, {
+            name: 'neighborhoodradius',
+            selector: row => row.neighborhoodradius.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'cost_xs',
+            selector: row => row.cost_xs.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'cost_tx',
+            selector: row => row.cost_tx.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'cost_cem',
+            selector: row => row.cost_cem.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'cost_sw_core',
+            selector: row => row.cost_sw_core.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'cost_ip_core',
+            selector: row => row.cost_ip_core.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'tech_name',
+            selector: row => row.tech_name.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'band_name',
+            selector: row => row.band_name.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'carrier_name',
+            selector: row => row.carrier_name.toLocaleString(),
+            sortable: false,
+        },
+        {
+            name: 'justification',
+            selector: row => row.justification.toLocaleString(),
+            sortable: false,
+        }, {
+            name: 'discountfactoronavg',
+            selector: row => row.discountfactoronavg.toLocaleString(),
+            sortable: false,
+        },
+    ];
     return (
         <>
             <div className="levelDiv">
@@ -43,7 +211,7 @@ export default function ItemTable() {
                     <div className="headText">
                         <h3>Choose Item</h3>
                     </div>
-                    <Table className='expenditure' responsive hover>
+                    {/* <Table className='expenditure' responsive hover>
                         <thead>
                             <tr>
                                 <th>Property_ID</th>
@@ -88,51 +256,52 @@ export default function ItemTable() {
                         </thead>
                         <tbody>
                             {itemLevel ? itemLevel.projectcomponentitemff.map((ele, index) =>
-                                <tr onClick={() => { itemSelect(index) }}   className={`${selected===index ? "visit" : ""}`} key={index}>
+                                <tr onClick={() => { itemSelect(index) }} className={`${selected === index ? "visit" : ""}`} key={index}>
                                     <th>{ele.property_id}</th>
                                     <th>{ele.latitude}</th>
                                     <td>{ele.longitude}</td>
-                                    <td>{ele.paybackperiod}</td>
-                                    <td>{ele.npv}</td>
-                                    <td>{ele.irr}</td>
-                                    <td>{ele.projectcomponent_id} </td>
-                                    <td>{ele.totalrevenue} </td>
-                                    <td>{ele.totalcapex} </td>
-                                    <td>{ele.totalrecurrentexpenses} </td>
-                                    <td>{ele.carrieraverageslevel} </td>
-                                    <td>{ele.carrieraveragessublevel} </td>
-                                    <td>{ele.givinworkingradius} </td>
-                                    <td>{ele.actualworkingradius} </td>
-                                    <td>{ele.servicecategory} </td>
-                                    <td>{ele.datagrowthtimesegmentname} </td>
-                                    <td>{ele.datagrowthtimesubsegmentname} </td>
-                                    <td>{ele.csvoicegrowthtimesegmentname} </td>
-                                    <td>{ele.csvoicegrowthtimesubsegmentname} </td>
-                                    <td>{ele.workingdatagrowthrate} </td>
-                                    <td>{ele.workingcsvoicegrowthrate} </td>
-                                    <td>{ele.lm_avgdailytotdatamb_mobile} </td>
-                                    <td>{ele.lm_avgdailytotvoicemin} </td>
-                                    <td>{ele.lm_qci8_data} </td>
-                                    <td>{ele.workingdataunitrate} </td>
-                                    <td>{ele.workingcsvoiceunitrate} </td>
-                                    <td>{ele.unitratedate} </td>
-                                    <td>{ele.neighborhoodradius} </td>
-                                    <td>{ele.cost_xs} </td>
-                                    <td>{ele.cost_tx} </td>
-                                    <td>{ele.cost_cem} </td>
-                                    <td>{ele.cost_sw_core} </td>
-                                    <td>{ele.cost_ip_core} </td>
-                                    <td>{ele.tech_name} </td>
-                                    <td>{ele.band_name} </td>
-                                    <td>{ele.carrier_name} </td>
-                                    <td>{ele.justification} </td>
-                                    <td>{ele.discountfactoronavg} </td>
+                                    <td>{ele.paybackperiod.toLocaleString()}</td>
+                                    <td>{ele.npv.toLocaleString()}</td>
+                                    <td>{(ele.irr * 100).toString().split('.')[0] + '.' + (ele.irr * 100).toString().split('.')[1].slice(0, 2)}%</td>
+                                    <td>{ele.projectcomponent_id.toLocaleString()} </td>
+                                    <td>{ele.totalrevenue.toLocaleString()} </td>
+                                    <td>{ele.totalcapex.toLocaleString()} </td>
+                                    <td>{ele.totalrecurrentexpenses.toLocaleString()} </td>
+                                    <td>{ele.carrieraverageslevel.toLocaleString()} </td>
+                                    <td>{ele.carrieraveragessublevel.toLocaleString()} </td>
+                                    <td>{ele.givinworkingradius.toLocaleString()} </td>
+                                    <td>{ele.actualworkingradius.toLocaleString()} </td>
+                                    <td>{ele.servicecategory.toLocaleString()} </td>
+                                    <td>{ele.datagrowthtimesegmentname.toLocaleString()} </td>
+                                    <td>{ele.datagrowthtimesubsegmentname.toLocaleString()} </td>
+                                    <td>{ele.csvoicegrowthtimesegmentname.toLocaleString()} </td>
+                                    <td>{ele.csvoicegrowthtimesubsegmentname.toLocaleString()} </td>
+                                    <td>{ele.workingdatagrowthrate.toLocaleString()} </td>
+                                    <td>{ele.workingcsvoicegrowthrate.toLocaleString()} </td>
+                                    <td>{ele.lm_avgdailytotdatamb_mobile.toLocaleString()} </td>
+                                    <td>{ele.lm_avgdailytotvoicemin.toLocaleString()} </td>
+                                    <td>{ele.lm_qci8_data.toLocaleString()} </td>
+                                    <td>{ele.workingdataunitrate.toLocaleString()} </td>
+                                    <td>{ele.workingcsvoiceunitrate.toLocaleString()} </td>
+                                    <td>{ele.unitratedate.split('T')[0]} </td>
+                                    <td>{ele.neighborhoodradius.toLocaleString()} </td>
+                                    <td>{ele.cost_xs.toLocaleString()} </td>
+                                    <td>{ele.cost_tx.toLocaleString()} </td>
+                                    <td>{ele.cost_cem.toLocaleString()} </td>
+                                    <td>{ele.cost_sw_core.toLocaleString()} </td>
+                                    <td>{ele.cost_ip_core.toLocaleString()} </td>
+                                    <td>{ele.tech_name.toLocaleString()} </td>
+                                    <td>{ele.band_name.toLocaleString()} </td>
+                                    <td>{ele.carrier_name.toLocaleString()} </td>
+                                    <td>{ele.justification.toLocaleString()} </td>
+                                    <td>{ele.discountfactoronavg.toLocaleString()} </td>
                                 </tr>
                             ) : <tr>
                                 <th>Loading</th>
                             </tr>}
                         </tbody>
-                    </Table>
+                    </Table> */}
+                    <DataTable columns={columns} ref={tableSelect} data={itemLevel.projectcomponentitemff} />
                 </div>
             </div>
         </>
