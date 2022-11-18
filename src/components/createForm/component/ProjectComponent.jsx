@@ -40,12 +40,13 @@ export default function ProjectComponent() {
             return obj;
         })
         let component_detail = {}
-        component_detail.component_name = e.target[2].value;
-        component_detail.component_desc = e.target[3].value;
+        component_detail.component_name = e.target[0].value;
+        component_detail.component_desc = e.target[1].value;
         component_detail.component_filename = files[select][0].name;
         let id = localStorage.getItem('new_project_id');
         component_detail.project_id = id;
         objArray.component_detail = component_detail;
+        console.log(objArray);
         let url;
         switch (parseInt(type)) {
             case 1:
