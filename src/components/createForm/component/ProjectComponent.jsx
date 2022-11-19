@@ -13,18 +13,30 @@ import { useLayoutEffect } from 'react';
 
 export default function ProjectComponent() {
     let navigate = useNavigate();
-    //toast state and function
+    const { files, setfiles, cAssump, setcAssump, select, setselect } = useContext(ComponentAssump)
     const [showA, setShowA] = useState(false);
     const [fileName, setfileName] = useState('');
-
-    const toggleShowA = () => setShowA(!showA);
-    const { files, setfiles, cAssump, setcAssump ,select,setselect} = useContext(ComponentAssump)
     const [type, setType] = useState(null);
+    const [cname, setCname] = useState('');
+    const [description, setDescription] = useState('');
+    const [saveBtn, setSaveBtn] = useState(false);
+    //toast state and function
+    let id = localStorage.getItem('new_project_id');
+    const toggleShowA = () => setShowA(!showA);
     function getFiles(e) {
         const newfile = e.target.files;
         setfiles([...files, newfile])
         // uploadFiles();
     }
+    useEffect(() => {
+        if (cname !== '' && description !== '' && type && files[select][0].name) {
+            setSaveBtn(true)
+        }
+        else {
+            setSaveBtn(false)
+        }
+    }, [cname, description, files, type])
+
     function assumpType(e) {
         const { value, name } = e.target;
         setType(value)
@@ -43,7 +55,6 @@ export default function ProjectComponent() {
         component_detail.component_name = e.target[0].value;
         component_detail.component_desc = e.target[1].value;
         component_detail.component_filename = files[select][0].name;
-        let id = localStorage.getItem('new_project_id');
         component_detail.project_id = id;
         objArray.component_detail = component_detail;
         console.log(objArray);
@@ -76,26 +87,25 @@ export default function ProjectComponent() {
         };
         const assumpPromise = axios.post(url, payload, { headers });
         Promise.all([assumpPromise]).then((result) => {
+            setSaveBtn(false)
             toggleShowA();
             setTimeout(() => {
                 toggleShowA()
-            }, 3000);
+            }, 0);
         }).catch((err) => {
             console.log(err);
         })
     }
+
     useEffect(() => {
         try {
             setfileName(files[files.length - 1][0].name);
         } catch (error) {
 
         }
-    }, [files])
-    useEffect(() => {
-        if(files.length>0)
-        {
+        if (files.length > 0) {
             var reader = new FileReader();
-            const f = files[files.length-1][0];
+            const f = files[files.length - 1][0];
             reader.onload = async function (e) {
                 var data = e.target.result;
                 let readedData = XLSX.read(data, { type: 'binary' });
@@ -103,12 +113,22 @@ export default function ProjectComponent() {
                 const ws = readedData.Sheets[wsname];
                 /* Convert array to json*/
                 const dataParse = XLSX.utils.sheet_to_json(ws, { header: 1, blankrows: true });
-                setcAssump([...cAssump,dataParse])
-                setselect(files.length-1)
+                setcAssump([...cAssump, dataParse])
+                setselect(files.length - 1)
             };
             reader.readAsBinaryString(f)
         }
     }, [files])
+    const finishProcess = async () => {
+        let url = 'http://103.245.193.211:5001'
+        let finishurl = `/v1/createjourney/getfinish/${id}`
+        console.log(url + finishurl);
+        const finishP = axios.get(url + finishurl)
+        Promise.all([finishP]).then((r) => {
+            navigate(`/userOne/dashBoard/ff/generate?request=new_project`)
+
+        }).catch((err) => { console.log(err); })
+    }
     return (
         <>
             <ToastContainer position="bottom-end" className="p-3">
@@ -135,28 +155,27 @@ export default function ProjectComponent() {
                                     <h3>Project Components</h3>
                                 </div>
                                 <div className="form-group">
-                                        <label htmlFor="aFile">Import Component</label>
-                                        <div className="uploadField">
-                                            <input type="file" name="aFile" id="aFile" accept=".xls,.xlsx,.ods,.csv" onChange={getFiles} />
-                                            <div className="fileName">
-                                                <span className='uploadName'>{fileName}</span>
-                                            </div>
-                                            <label htmlFor="aFile">Browse</label>
+                                    <label htmlFor="aFile">Import Component</label>
+                                    <div className="uploadField">
+                                        <input type="file" name="aFile" id="aFile" accept=".xls,.xlsx,.ods,.csv" onChange={getFiles} />
+                                        <div className="fileName">
+                                            <span className='uploadName'>{fileName}</span>
                                         </div>
+                                        <label htmlFor="aFile">Browse</label>
                                     </div>
+                                </div>
                                 <form action="" className="assumptions" onSubmit={sendAsumption}>
-
                                     <div className="form-group">
                                         <label htmlFor="aName">Component Name</label>
-                                        <input type="text" name="aName" id="aName" required />
+                                        <input onChange={(e) => { setCname(e.target.value) }} type="text" name="aName" id="aName" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="adesc">Component Description</label>
-                                        <textarea name="adesc" id="adesc" cols="30" rows="5" required></textarea>
+                                        <textarea onChange={(e) => { setDescription(e.target.value) }} name="adesc" id="adesc" cols="30" rows="5"  ></textarea>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="aSelect">Component Assumption</label>
-                                        <select name="aSelect" onChange={assumpType} id="aSelect" required>
+                                        <select name="aSelect" onChange={assumpType} id="aSelect"  >
                                             <option value="0">Select Assumptions</option>
                                             <option value="1">Carrier Expansion</option>
                                             <option value="2">Band Expansion</option>
@@ -165,11 +184,8 @@ export default function ProjectComponent() {
                                         </select>
                                     </div>
                                     <div className="actbtn">
-                                        <button type='submit'>Save</button>
-                                        <button onClick={() => {
-                                            navigate(`/userOne/dashBoard/ff/generate?request=new_project`)
-                                        }
-                                        }>Finish</button>
+                                        <button type='submit' disabled={!saveBtn}>Save</button>
+                                        <button onClick={finishProcess} >Finish</button>
                                     </div>
                                 </form>
                             </Col>
