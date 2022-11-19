@@ -29,7 +29,7 @@ export default function ProfitLoss() {
                     ''}
                         </div>
                     </div>
-                    <Table className='expenditureProfit'>
+                    <Table className='expenditure'>
                         <thead>
                             <tr>
                                 <th>Name</th>

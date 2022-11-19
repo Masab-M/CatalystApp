@@ -9,7 +9,7 @@ export default function CashFlowC() {
                    <div className="headText">
                        <h3>Cash Flow</h3>
                    </div>
-                   <Table className='cshflw'>
+                   <Table className='expenditure'>
                        <thead>
                            <tr>
                                <th>Neutral</th>

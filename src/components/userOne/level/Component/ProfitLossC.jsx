@@ -9,7 +9,7 @@ export default function ProfitLossC() {
                     <div className="headText">
                         <h3>Expenditure</h3>
                     </div>
-                    <Table className='expenditureProfit'>
+                    <Table className='expenditure'>
                         <thead>
                             <tr>
                                 <th>Neutral</th>

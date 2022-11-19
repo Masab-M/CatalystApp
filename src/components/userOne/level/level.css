@@ -119,6 +119,7 @@ ul.infoLinks {
 ul.otherInfoDet{
   margin-top: 15px;
 }
+button:disabled {opacity: 0.4;}
 ul.otherInfoDet.nav.nav-tabs li {
   text-decoration: none;
   box-shadow: 4px 0px 20px 0px #7676768a;

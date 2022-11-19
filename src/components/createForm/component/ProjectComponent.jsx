@@ -125,7 +125,7 @@ export default function ProjectComponent() {
         console.log(url + finishurl);
         const finishP = axios.get(url + finishurl)
         Promise.all([finishP]).then((r) => {
-            navigate(`/userOne/dashBoard/ff/generate?request=new_project`)
+            navigate(`/userOne/dashBoard/ff/view?request=new_project`)
 
         }).catch((err) => { console.log(err); })
     }

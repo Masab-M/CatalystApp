@@ -30,7 +30,7 @@ export default function CashFlow() {
                     ''}
                         </div>
                     </div>
-                    <Table className='cshflw' responsive>
+                    <Table className='expenditure' responsive>
                         <thead>
                             <tr>
                                 <th>Name</th>
