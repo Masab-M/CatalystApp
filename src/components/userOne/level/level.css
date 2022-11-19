@@ -17,6 +17,12 @@
 .expenditure.table>:not(caption)>*>*{
   padding: 0px .5rem !important;
 }
+.sc-jqUVSM.active {
+  background-color: rgb(161, 161, 161);
+}
+.sc-jqUVSM{
+  cursor: pointer;
+}
 tr.visit {
   background-color: #e3e3e3;
 }
@@ -25,7 +31,7 @@ tr.visit {
   border-top-left-radius: 5px;
 }
 .sc-jqUVSM {
-  min-height: 10px !important;
+  min-height: 25px !important;
 }
 header.sc-dIouRR.TUEFO {
   top: 0px;
@@ -48,12 +54,12 @@ header.sc-dIouRR.TUEFO {
   margin-left: 6px;
 }
 .sc-dmRaPn.gelpCx {
-  height: 110px;
+  height: 200px;
   overflow-y: auto;
 }
 .csvFile a {
   text-decoration: none;
-  font-size: 17px;
+  font-size: 12px;
   background-color: #0060cc;
   padding: 2px;
   border-radius: 2px;
@@ -120,7 +126,7 @@ ul.otherInfoDet.nav.nav-tabs li {
   background-color: #62ACFF;
   transform-origin: bottom left;
   font-size: 20px;
-  transform: skew(40deg, 0deg);
+  transform: skew(0deg, 0deg);
   color: var(--textBlack);
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -154,13 +160,13 @@ ul.otherInfoDet.nav.nav-tabs li button {
   display: block;
   text-transform: capitalize;
   font-size: 18px;
-  padding: 7px 40px;
+  padding: 7px 98px;
   color: black;
 
   -webkit-transform: skew(20deg) !important;
   -moz-transform: skew(20deg) !important;
   -o-transform: skew(20deg) !important;
-  transform: skew(-41deg) !important;
+  transform: skew(0deg) !important;
 }
 
 .levelDiv thead th {

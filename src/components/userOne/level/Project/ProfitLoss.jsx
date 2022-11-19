@@ -50,7 +50,7 @@ export default function ProfitLoss() {
                         <tbody>
                             {profitloss ? profitloss.map((rec, index) =>
                                 <tr key={index}>
-                                    <th>{rec.forecast_name }</th>
+                                    <td>{rec.forecast_name }</td>
                                      
                                     <td>{  Math.round(rec.year_0).toLocaleString()}</td>
                                     <td>{  Math.round(rec.year_1).toLocaleString()}</td>

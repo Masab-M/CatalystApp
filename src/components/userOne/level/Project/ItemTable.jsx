@@ -8,20 +8,27 @@ import { AiOutlineExport } from 'react-icons/ai';
 
 import { FFContext } from '../../../../Context/FFContext'
 export default function ItemTable() {
-    const { itemLevel, setProjectLevel, selected, setselected } = useContext(FFContext);
+    const { itemLevel,loading, setProjectLevel, selected, setselected } = useContext(FFContext);
     const [filterText, setFilterText] = useState('');
     const [CSVData, setCSVData] = useState([]);
-
     var obj_arr_appended = itemLevel.projectcomponentitemff.map(function (currentValue, Index) {
         currentValue.SERIAL_NO = Index
         return currentValue
     })
     const filteredItems = obj_arr_appended.filter(
-        row => row.property_id && row.property_id.toLowerCase().includes(filterText.toLowerCase()),
+        row => row.property_id && row.property_id.toLowerCase().includes(filterText.toLowerCase()) || row.latitude && row.latitude.toLowerCase().includes(filterText.toLowerCase()),
     );
     const itemSelect = (e) => {
         const index = e.SERIAL_NO || e.SERIAL_NO === 0 ? e.SERIAL_NO : e;
-        console.log(index);
+        console.log('row-',index);
+        filteredItems.forEach((e,i) => {
+            var el = document.getElementById(`row-${i}`);
+            console.log(el);
+            el.classList.remove("active");
+        });
+
+        var element = document.getElementById(`row-${index}`);
+        element.classList.add("active");
         setselected(index)
         if (itemLevel) {
             let obj = {};
@@ -73,15 +80,15 @@ export default function ItemTable() {
         {
             name: 'Payback_Period',
             selector: row => row.paybackperiod.toLocaleString(),
-            sortable: false,
+            sortable: true,
         }, {
             name: 'NPV',
             selector: row => row.npv.toLocaleString(),
-            sortable: false,
+            sortable: true,
         }, {
             name: 'IRR',
             selector: row => (row.irr * 100).toString().split('.')[0] + '%',
-            sortable: false,
+            sortable: true,
         }, {
             name: 'Component_ID',
             selector: row => row.projectcomponent_id.toLocaleString(),
@@ -244,11 +251,11 @@ export default function ItemTable() {
         );
     }, [filterText]);
     useEffect(() => {
-        let csvArray=JSON.parse(JSON.stringify(itemLevel.projectcomponentitemff))
-        const result = csvArray.map(({item_revenues,item_depreciation,item_expenditure,item_recurrent_expenses,item_profit_and_loss,item_cash_flow_performance,...rest}) => ({...rest}));
+        let csvArray = JSON.parse(JSON.stringify(itemLevel.projectcomponentitemff))
+        const result = csvArray.map(({ item_revenues, item_depreciation, item_expenditure, item_recurrent_expenses, item_profit_and_loss, item_cash_flow_performance, ...rest }) => ({ ...rest }));
         setCSVData(result)
     }, [itemLevel])
-    
+
     return (
         <>
             <div className="levelDiv">
@@ -264,7 +271,9 @@ export default function ItemTable() {
                                 ''}
                         </div>
                     </div>
-                    <DataTable subHeader subHeaderComponent={subHeaderComponentMemo} onRowClicked={(e) => { itemSelect(e) }} columns={columns} data={filteredItems} />
+                    <DataTable
+                        progressPending={loading}
+                        fixedHeader={true} fixedHeaderScrollHeight={'300px'} subHeader subHeaderComponent={subHeaderComponentMemo} onRowClicked={(e) => { itemSelect(e) }} columns={columns} data={filteredItems} />
                 </div>
             </div>
         </>
