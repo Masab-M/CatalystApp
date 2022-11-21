@@ -32,7 +32,7 @@ export default function InvestPerform() {
                                         <div className="ValueInvst">
                                             <span>{
                                             investP.paybackperiod.toLocaleString()
-                                            }</span>
+                                            } Year</span>
                                         </div>
                                     </div>
                                 </Col>
@@ -40,11 +40,24 @@ export default function InvestPerform() {
                                     <div className="ProjectInvst">
                                         <div className="headInvst">
                                             <h5>
-                                                Total Recurrentexpenses
+                                                Total Capex
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
-                                            <span>{investP.totalrecurrentexpenses.toLocaleString()}</span>
+                                            <span>{investP.totalcapex.toLocaleString()}</span>
+                                        </div>
+                                    </div>
+                                </Col>
+
+                                <Col xs={6}>
+                                    <div className="ProjectInvst">
+                                        <div className="headInvst">
+                                            <h5>
+                                                NPV
+                                            </h5>
+                                        </div>
+                                        <div className="ValueInvst">
+                                            <span>{investP.npv.toLocaleString()}</span>
                                         </div>
                                     </div>
                                 </Col>
@@ -66,18 +79,6 @@ export default function InvestPerform() {
                                     <div className="ProjectInvst">
                                         <div className="headInvst">
                                             <h5>
-                                                Total Capex
-                                            </h5>
-                                        </div>
-                                        <div className="ValueInvst">
-                                            <span>{investP.totalcapex.toLocaleString()}</span>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col xs={6}>
-                                    <div className="ProjectInvst">
-                                        <div className="headInvst">
-                                            <h5>
                                                 IRR
                                             </h5>
                                         </div>
@@ -88,18 +89,20 @@ export default function InvestPerform() {
                                         </div>
                                     </div>
                                 </Col>
+
                                 <Col xs={6}>
                                     <div className="ProjectInvst">
                                         <div className="headInvst">
                                             <h5>
-                                                NPV
+                                                Total Recurrent Expenses
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
-                                            <span>{investP.npv.toLocaleString()}</span>
+                                            <span>{investP.totalrecurrentexpenses.toLocaleString()}</span>
                                         </div>
                                     </div>
                                 </Col>
+
                             </Row>
 
                             :'Loading'}
