@@ -24,10 +24,10 @@ export default function FFforCast() {
       <Tab className='infoLinks' eventKey="revenue" title="revenue">
         <Revenue/>
       </Tab>
-      <Tab className='infoLinks' eventKey="profilLoss" title="profilLoss">
+      <Tab className='infoLinks' eventKey="profilLoss" title="profit and Loss">
         <ProfitLoss/>
       </Tab>
-      <Tab className='infoLinks' eventKey="cashflow" title="cashflow">
+      <Tab className='infoLinks' eventKey="cashflow" title="cash Flow">
         <CashFlow/>
       </Tab>
     </Tabs>

@@ -19,7 +19,7 @@ export default function ProfitLoss() {
             <div className="levelDiv">
                 <div className="pltable">
                     <div className="headText">
-                        <h3>Profit Loss</h3>
+                        <h3>Profit and Loss</h3>
                         <div className="csvFile">
                         {profitloss ?
                     <CSVLink data={profitloss}>

@@ -19,7 +19,7 @@ export default function Revenue() {
                 <div className="levelDiv">
                 <div className="levelTable">
                     <div className="headText">
-                        <h3>Depreciation Summary</h3>
+                        <h3>Revenue Summary</h3>
                         <div className="csvFile">
                         {revenue ?
                     <CSVLink data={revenue}>
