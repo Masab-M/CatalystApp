@@ -79,11 +79,11 @@ export default function ItemTable() {
         },
         {
             name: 'Payback_Period',
-            selector: row => row.paybackperiod.toLocaleString(),
+            selector: row => parseInt(row.paybackperiod.toLocaleString()),
             sortable: true,
         }, {
             name: 'NPV',
-            selector: row => row.npv.toLocaleString(),
+            selector: row => parseInt(row.npv.toLocaleString()),
             sortable: true,
         }, {
             name: 'IRR (in %)',
