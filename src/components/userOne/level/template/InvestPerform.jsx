@@ -26,7 +26,7 @@ export default function InvestPerform() {
                                     <div className="ProjectInvst">
                                         <div className="headInvst">
                                             <h5>
-                                                paybackperiod
+                                                Payback Period
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
@@ -40,7 +40,7 @@ export default function InvestPerform() {
                                     <div className="ProjectInvst">
                                         <div className="headInvst">
                                             <h5>
-                                                totalrecurrentexpenses
+                                                Total Recurrentexpenses
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
@@ -52,7 +52,7 @@ export default function InvestPerform() {
                                     <div className="ProjectInvst">
                                         <div className="headInvst">
                                             <h5>
-                                                totalrevenue
+                                                Total Revenue
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
@@ -66,7 +66,7 @@ export default function InvestPerform() {
                                     <div className="ProjectInvst">
                                         <div className="headInvst">
                                             <h5>
-                                                totalcapex
+                                                Total Capex
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
@@ -78,7 +78,7 @@ export default function InvestPerform() {
                                     <div className="ProjectInvst">
                                         <div className="headInvst">
                                             <h5>
-                                                irr
+                                                IRR
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
@@ -92,7 +92,7 @@ export default function InvestPerform() {
                                     <div className="ProjectInvst">
                                         <div className="headInvst">
                                             <h5>
-                                                Npv
+                                                NPV
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
