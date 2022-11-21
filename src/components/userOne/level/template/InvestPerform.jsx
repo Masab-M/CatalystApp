@@ -82,8 +82,8 @@ export default function InvestPerform() {
                                             </h5>
                                         </div>
                                         <div className="ValueInvst">
-                                            {/* <span>{(investP.irr*100).toString().slice(0,5)}%</span> */}
-                                            <span>{(investP.irr*100).toString().split('.')[0]+'.'+(investP.irr*100).toString().split('.')[1].slice(0,2)}%</span>
+                                            <span>{(investP.irr * 100).toString().split('.')[0]}%</span>
+                                            {/* <span>{(investP.irr*100).toString().split('.')[0]+'.'+(investP.irr*100).toString().split('.')[1].slice(0,2)}%</span> */}
                                             {/* <span>{Number(investP.irr/100).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2})}</span> */}
                                         </div>
                                     </div>

@@ -112,7 +112,8 @@ form.assumptions .form-group {
 }
 
 .actbtn a,
-.actbtn button {
+.actbtn button ,.actbtn .finishbtn{
+  cursor: pointer;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   outline: none;

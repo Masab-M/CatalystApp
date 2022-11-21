@@ -25,17 +25,23 @@ export default function ProjectComponent() {
     const toggleShowA = () => setShowA(!showA);
     function getFiles(e) {
         const newfile = e.target.files;
-        setfiles([...files, newfile])
+        if(newfile[0]){
+            setfiles([...files, newfile])
+        }
         // uploadFiles();
     }
+    useEffect(()=>{
+        console.log('select',select);
+    },[select])
     useEffect(() => {
+        console.log(cname, description, type, files[select], select);
         if (cname !== '' && description !== '' && type && files[select][0].name) {
             setSaveBtn(true)
         }
         else {
             setSaveBtn(false)
         }
-    }, [cname, description, files, type])
+    }, [cname, description, files, type,select])
 
     function assumpType(e) {
         const { value, name } = e.target;
@@ -79,6 +85,9 @@ export default function ProjectComponent() {
             default:
                 break;
         }
+        setCname('')
+        setDescription('')
+        setType(null)
         e.target.reset();
     }
     function cAssumpSend(url, payload) {
@@ -113,8 +122,8 @@ export default function ProjectComponent() {
                 const ws = readedData.Sheets[wsname];
                 /* Convert array to json*/
                 const dataParse = XLSX.utils.sheet_to_json(ws, { header: 1, blankrows: true });
-                setcAssump([...cAssump, dataParse])
                 setselect(files.length - 1)
+                setcAssump([...cAssump, dataParse])
             };
             reader.readAsBinaryString(f)
         }
@@ -126,7 +135,6 @@ export default function ProjectComponent() {
         const finishP = axios.get(url + finishurl)
         Promise.all([finishP]).then((r) => {
             navigate(`/userOne/dashBoard/ff/view?request=new_project`)
-
         }).catch((err) => { console.log(err); })
     }
     return (
@@ -167,11 +175,11 @@ export default function ProjectComponent() {
                                 <form action="" className="assumptions" onSubmit={sendAsumption}>
                                     <div className="form-group">
                                         <label htmlFor="aName">Component Name</label>
-                                        <input onChange={(e) => { setCname(e.target.value) }} type="text" name="aName" id="aName" />
+                                        <input onKeyUp={(e) => { setCname(e.target.value) }} type="text" name="aName" id="aName" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="adesc">Component Description</label>
-                                        <textarea onChange={(e) => { setDescription(e.target.value) }} name="adesc" id="adesc" cols="30" rows="5"  ></textarea>
+                                        <textarea onKeyUp={(e) => { setDescription(e.target.value) }} name="adesc" id="adesc" cols="30" rows="5"  ></textarea>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="aSelect">Component Assumption</label>
@@ -185,7 +193,7 @@ export default function ProjectComponent() {
                                     </div>
                                     <div className="actbtn">
                                         <button type='submit' disabled={!saveBtn}>Save</button>
-                                        <button onClick={finishProcess} >Finish</button>
+                                        <div className='finishbtn' onClick={finishProcess} >Finish</div >
                                     </div>
                                 </form>
                             </Col>

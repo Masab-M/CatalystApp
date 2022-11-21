@@ -86,8 +86,8 @@ export default function ItemTable() {
             selector: row => row.npv.toLocaleString(),
             sortable: true,
         }, {
-            name: 'IRR',
-            selector: row => (row.irr * 100).toString().split('.')[0] + '%',
+            name: 'IRR (in %)',
+            selector: row => parseInt((row.irr * 100).toString().split('.')[0]),
             sortable: true,
         }, {
             name: 'Component_ID',

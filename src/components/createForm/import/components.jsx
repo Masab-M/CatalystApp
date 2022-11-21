@@ -6,6 +6,7 @@ import { AiOutlineEdit } from 'react-icons/ai'
 import { ComponentAssump } from '../../../Context/ProjectComponent'
 export default function components() {
   const { cAssump, files,setselect,select } = useContext(ComponentAssump);
+  console.log(files.length);
   return (
     <>
       <div className="AssumpDiv">
