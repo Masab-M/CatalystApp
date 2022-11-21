@@ -32,7 +32,7 @@ export default function InvestPerform() {
                                         <div className="ValueInvst">
                                             <span>{
                                             investP.paybackperiod.toLocaleString()
-                                            } Year</span>
+                                            } Years</span>
                                         </div>
                                     </div>
                                 </Col>
