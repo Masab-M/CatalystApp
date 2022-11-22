@@ -11,7 +11,6 @@ export default function ItemTable() {
     const { itemLevel,loading, setProjectLevel, selected, setselected } = useContext(FFContext);
     const [filterText, setFilterText] = useState('');
     const [CSVData, setCSVData] = useState([]);
-    const [itemSelected, setitemSelected] = useState(0);
     var obj_arr_appended = itemLevel.projectcomponentitemff.map(function (currentValue, Index) {
         currentValue.SERIAL_NO = Index
         return currentValue
@@ -21,11 +20,10 @@ export default function ItemTable() {
     );
     const itemSelect = (e) => {
         const index = e.SERIAL_NO || e.SERIAL_NO === 0 ? e.SERIAL_NO : e;
-        var el = document.getElementById(`row-${itemSelected}`);
+        var el = document.getElementById(`row-${selected}`);
         el.classList.remove("active");
         var element = document.getElementById(`row-${index}`);
         element.classList.add("active");
-        setitemSelected(index)
         setselected(index)
         if (itemLevel) {
             let obj = {};
@@ -76,11 +74,11 @@ export default function ItemTable() {
         },
         {
             name: 'Payback_Period',
-            selector: row => parseInt(row.paybackperiod),
+            selector: row => parseFloat(row.paybackperiod),
             sortable: true,
         }, {
             name: 'NPV',
-            selector: row =>parseInt(row.npv),
+            selector: row =>parseFloat(row.npv),
             sortable: true,
         }, {
             name: 'IRR (in %)',
