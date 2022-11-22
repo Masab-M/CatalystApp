@@ -78,8 +78,8 @@ export default function ItemTable() {
             sortable: true,
         }, {
             name: 'NPV',
-            selector: row =>parseFloat(row.npv),
-            sortable: true,
+            selector: row =>row.npv.toLocaleString(),
+            sortable: false,
         }, {
             name: 'IRR (in %)',
             selector: row => parseInt((row.irr * 100).toString().split('.')[0]),

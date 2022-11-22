@@ -8,8 +8,6 @@ import GenerateFF from "./components/userOne/GenerateFF";
 import ViewFF from "./components/userOne/ViewFF";
 import Links from "./components/Links";
 import Assumption from "./components/userOne/create/Assumption";
-import Upload from "./components/userOne/create/upload";
-import Import from "./components/userOne/create/Import";
 import Component from "./components/userOne/create/Component";
 import ProjectLevel from "./components/userOne/level/Project/ProjectLevel";
 import Expenditure from "./components/userOne/level/Project/Expenditure";
