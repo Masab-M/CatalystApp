@@ -74,7 +74,7 @@ export default function ItemTable() {
         },
         {
             name: 'Payback_Period',
-            selector: row => parseFloat(row.paybackperiod),
+            selector: row => parseInt(row.paybackperiod),
             sortable: true,
         }, {
             name: 'NPV',
