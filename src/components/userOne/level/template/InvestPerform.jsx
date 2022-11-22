@@ -37,9 +37,6 @@ export default function InvestPerform() {
                 delete csvArray['component_recurrent_expenses'];
                 delete csvArray['component_revenues'];  
             }
-            
-            console.log(csvArray);
-            // const result = csvArray.map(({ item_revenues, item_depreciation, item_expenditure, item_recurrent_expenses, item_profit_and_loss, item_cash_flow_performance, ...rest }) => ({ ...rest }));
             setCSVData(csvArray)
         }
     }, [investP])
