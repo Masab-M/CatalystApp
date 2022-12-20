@@ -10,6 +10,7 @@ export default function SelectComponent() {
   }
   const onChangeView=(e)=>{
   const {value,name}=e.target;
+  console.log(value);
   setChangeView(value)
   }
   useEffect(() => {
@@ -37,10 +38,12 @@ export default function SelectComponent() {
             {
               itemLevel ?
                 <div className="itemMapview">
-                  <label htmlFor="TabView">Item View</label>
-                  <input type="radio" name="radio" id="TabView" value='1' onChange={onChangeView}  />
+                  <form action="">
+                  <label htmlFor="TabView">Tabular View</label>
+                  <input type="radio" name="radio" id="TabView" value='1' onClick={onChangeView} defaultChecked/>
                   <label htmlFor="mapView">Map View</label>
-                  <input type="radio" name="radio" id="mapView" value='2' onChange={onChangeView} />
+                  <input type="radio" name="radio" id="mapView" value='2' onClick={onChangeView} />
+                  </form>
                 </div>
                 : ''
             }

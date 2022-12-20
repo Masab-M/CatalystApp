@@ -12,7 +12,7 @@ import SelectComponent from '../template/SelectComponent'
 import ItemTable from './ItemTable'
 export default function ProjectLevel() {
   const [ProjectLevel, setProjectLevel] = useState(null) //* Level Data
-  const [changeView, setChangeView] = useState(null) //* item Map View Data
+  const [changeView, setChangeView] = useState(1) //* item Map View Data
   const [itemLevel, setItemLevel] = useState(null) //* Level Data
   const [cId, setcId] = useState(null);//* Selected Category 
   const [projectname, setprojectname] = useState(null)//* project name 

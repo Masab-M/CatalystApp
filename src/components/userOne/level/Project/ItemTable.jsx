@@ -9,7 +9,7 @@ import GoogleMapReact from 'google-map-react';
 import { FFContext } from '../../../../Context/FFContext'
 import { FaMapMarkerAlt } from 'react-icons/fa';
 const AnyReactComponent = ({ data }) => <div>
-    <FaMapMarkerAlt style={{color:'#f00'}} className='marker'/>
+    <FaMapMarkerAlt  className={`marker ${parseInt(data.pp)>5 ?'r':'b'}`} />
     <div className="hoverData">
     <div className="markerdata">
         <label htmlFor="">NPV :</label>
@@ -17,7 +17,7 @@ const AnyReactComponent = ({ data }) => <div>
     </div>
     <div className="markerdata">
         <label htmlFor="">Payback Period :</label>
-        <span>{data.npv}</span>
+        <span>{data.pp}</span>
     </div>
     <div className="markerdata">
         <label htmlFor="">IRR :</label>
@@ -33,7 +33,7 @@ export default function ItemTable() {
             lat: 17.017360,
             lng: 54.116230
         },
-        zoom: 11
+        zoom: 5
     };
     const { itemLevel, loading, setProjectLevel, selected, changeView, setselected } = useContext(FFContext);
     const [filterText, setFilterText] = useState('');
