@@ -12,6 +12,7 @@ import SelectComponent from '../template/SelectComponent'
 import ItemTable from './ItemTable'
 export default function ProjectLevel() {
   const [ProjectLevel, setProjectLevel] = useState(null) //* Level Data
+  const [changeView, setChangeView] = useState(null) //* item Map View Data
   const [itemLevel, setItemLevel] = useState(null) //* Level Data
   const [cId, setcId] = useState(null);//* Selected Category 
   const [projectname, setprojectname] = useState(null)//* project name 
@@ -50,22 +51,22 @@ export default function ProjectLevel() {
         })
 
         break;
-        case 3:
-          setProjectLevel(null)
-          endpoint = `/v1/viewff/getcomponentlist/${id}`//* ID have to be updated
-          setcId(null)
-          changeLevel(endpoint).then((result) => {
-            setCatList(result)
-            setcId(result.projectcomponentslist[0].projectcomponent_id)
-          })
-          break;
+      case 3:
+        setProjectLevel(null)
+        endpoint = `/v1/viewff/getcomponentlist/${id}`//* ID have to be updated
+        setcId(null)
+        changeLevel(endpoint).then((result) => {
+          setCatList(result)
+          setcId(result.projectcomponentslist[0].projectcomponent_id)
+        })
+        break;
       default:
         break;
     }
   }, [level])
   useEffect(() => {
     if (cId) {
-      if(level===3){
+      if (level === 3) {
         setLoading(true)
         const i_Level = `/v1/viewff/getprojectcomponentitemff/${id}/${cId}`//* ID have to be updated with 2
         console.log(i_Level);
@@ -74,7 +75,7 @@ export default function ProjectLevel() {
           setItemLevel(result)
         })
       }
-      else{
+      else {
         const c_Level = `/v1/viewff/getprojectcomponentff/${id}/${cId}`//* ID have to be updated with 2
         changeLevel(c_Level).then((result) => {
           setProjectLevel(result)
@@ -84,12 +85,17 @@ export default function ProjectLevel() {
   }, [cId])
   return (
     <>
-      <FFContext.Provider value={{loading,selected, setselected,level, ProjectLevel, setlevel, catList, setcId,itemLevel,setProjectLevel}}>
+      <FFContext.Provider value={{ changeView, setChangeView, loading, selected, setselected, level, ProjectLevel, setlevel, catList, setcId, itemLevel, setProjectLevel }}>
         <DashNav level='Project' p_Name={projectname} />
         {catList ? <SelectComponent /> : ''}
-        {level!==3 ? <InvestPerform />:'' } 
+        {level !== 3 ? <InvestPerform /> : ''}
         {itemLevel ? <ItemTable /> : ''}
-        <FFforCast />
+        {
+          parseInt(changeView) === 2 ?
+            ''
+            :
+            <FFforCast />
+        }
       </FFContext.Provider>
     </>
   )

@@ -5,10 +5,37 @@ import { useContext } from 'react'
 import { CSVLink } from 'react-csv';
 import DataTable from 'react-data-table-component';
 import { AiOutlineExport } from 'react-icons/ai';
-
+import GoogleMapReact from 'google-map-react';
 import { FFContext } from '../../../../Context/FFContext'
+import { FaMapMarkerAlt } from 'react-icons/fa';
+const AnyReactComponent = ({ data }) => <div>
+    <FaMapMarkerAlt style={{color:'#f00'}} className='marker'/>
+    <div className="hoverData">
+    <div className="markerdata">
+        <label htmlFor="">NPV :</label>
+        <span>{data.npv}</span>
+    </div>
+    <div className="markerdata">
+        <label htmlFor="">Payback Period :</label>
+        <span>{data.npv}</span>
+    </div>
+    <div className="markerdata">
+        <label htmlFor="">IRR :</label>
+        <span>{data.irr}</span>
+    </div>
+    </div>
+    
+    </div>; 
+
 export default function ItemTable() {
-    const { itemLevel,loading, setProjectLevel, selected, setselected } = useContext(FFContext);
+    const defaultProps = {
+        center: {
+            lat: 17.017360,
+            lng: 54.116230
+        },
+        zoom: 11
+    };
+    const { itemLevel, loading, setProjectLevel, selected, changeView, setselected } = useContext(FFContext);
     const [filterText, setFilterText] = useState('');
     const [CSVData, setCSVData] = useState([]);
     var obj_arr_appended = itemLevel.projectcomponentitemff.map(function (currentValue, Index) {
@@ -78,7 +105,7 @@ export default function ItemTable() {
             sortable: true,
         }, {
             name: 'NPV',
-            selector: row =>row.npv.toLocaleString(),
+            selector: row => row.npv.toLocaleString(),
             sortable: false,
         }, {
             name: 'IRR (in %)',
@@ -267,9 +294,39 @@ export default function ItemTable() {
                                 ''}
                         </div>
                     </div>
-                    <DataTable
-                        progressPending={loading}
-                        fixedHeader={true} fixedHeaderScrollHeight={'300px'} subHeader subHeaderComponent={subHeaderComponentMemo} onRowClicked={(e) => { itemSelect(e) }} columns={columns} data={filteredItems} />
+                    {
+
+                        parseInt(changeView) === 2 ?
+                            <div style={{ height: '100vh', width: '100%' }}>
+                                <GoogleMapReact
+                                    bootstrapURLKeys={{ key: "AIzaSyBZQ84P7XBoocSpF2NiKaZ1FVy7ByjlizM" }}
+                                    defaultCenter={defaultProps.center}
+                                    defaultZoom={defaultProps.zoom}
+                                >
+                                    {
+                                        filteredItems.map((marker,index)=>
+                                        <AnyReactComponent
+                                    
+                                            lat={marker.latitude}
+                                            lng={marker.longitude}
+                                            data={{
+                                                npv:marker.npv.toLocaleString(),
+                                                pp:marker.paybackperiod,
+                                                irr:(marker.irr * 100).toString().split('.')[0]
+                                            }
+                                            }
+                                            
+                                        />                     
+                                        )
+                                    }
+                                </GoogleMapReact>
+                            </div>
+                            :
+
+                            <DataTable
+                                progressPending={loading}
+                                fixedHeader={true} fixedHeaderScrollHeight={'300px'} subHeader subHeaderComponent={subHeaderComponentMemo} onRowClicked={(e) => { itemSelect(e) }} columns={columns} data={filteredItems} />
+                    }
                 </div>
             </div>
         </>
