@@ -9,24 +9,41 @@ import GoogleMapReact from 'google-map-react';
 import { FFContext } from '../../../../Context/FFContext'
 import { FaMapMarkerAlt } from 'react-icons/fa';
 const AnyReactComponent = ({ data }) => <div>
-    <FaMapMarkerAlt  className={`marker ${parseInt(data.pp)>5 ?'r':'b'}`} />
+    <FaMapMarkerAlt className={`marker ${parseInt(data.pp) > 5 ? 'r' : 'b'}`} />
     <div className="hoverData">
-    <div className="markerdata">
-        <label htmlFor="">NPV :</label>
-        <span>{data.npv}</span>
+        <div className="markerdata">
+            <label htmlFor="">NPV :</label>
+            <span>{data.npv}</span>
+        </div>
+        <div className="markerdata">
+            <label htmlFor="">Payback Period :</label>
+            <span>{data.pp}</span>
+        </div>
+        <div className="markerdata">
+            <label htmlFor="">IRR :</label>
+            <span>{data.irr}</span>
+        </div>
     </div>
-    <div className="markerdata">
-        <label htmlFor="">Payback Period :</label>
-        <span>{data.pp}</span>
-    </div>
-    <div className="markerdata">
-        <label htmlFor="">IRR :</label>
-        <span>{data.irr}</span>
-    </div>
-    </div>
-    
-    </div>; 
 
+</div>;
+function createMapOptions(maps) {
+    // next props are exposed at maps
+    // "Animation", "ControlPosition", "MapTypeControlStyle", "MapTypeId",
+    // "NavigationControlStyle", "ScaleControlStyle", "StrokePosition", "SymbolPath", "ZoomControlStyle",
+    // "DirectionsStatus", "DirectionsTravelMode", "DirectionsUnitSystem", "DistanceMatrixStatus",
+    // "DistanceMatrixElementStatus", "ElevationStatus", "GeocoderLocationType", "GeocoderStatus", "KmlLayerStatus",
+    // "MaxZoomStatus", "StreetViewStatus", "TransitMode", "TransitRoutePreference", "TravelMode", "UnitSystem"
+    return {
+      zoomControlOptions: {
+        position: maps.ControlPosition.RIGHT_CENTER,
+        style: maps.ZoomControlStyle.SMALL
+      },
+      mapTypeControlOptions: {
+        position: maps.ControlPosition.TOP_RIGHT
+      },
+      mapTypeControl: true
+    };
+  }
 export default function ItemTable() {
     const defaultProps = {
         center: {
@@ -302,21 +319,22 @@ export default function ItemTable() {
                                     bootstrapURLKeys={{ key: "AIzaSyBZQ84P7XBoocSpF2NiKaZ1FVy7ByjlizM" }}
                                     defaultCenter={defaultProps.center}
                                     defaultZoom={defaultProps.zoom}
+                                    options={createMapOptions}
                                 >
                                     {
-                                        filteredItems.map((marker,index)=>
-                                        <AnyReactComponent
-                                    
-                                            lat={marker.latitude}
-                                            lng={marker.longitude}
-                                            data={{
-                                                npv:marker.npv.toLocaleString(),
-                                                pp:marker.paybackperiod,
-                                                irr:(marker.irr * 100).toString().split('.')[0]
-                                            }
-                                            }
-                                            
-                                        />                     
+                                        filteredItems.map((marker, index) =>
+                                            <AnyReactComponent
+
+                                                lat={marker.latitude}
+                                                lng={marker.longitude}
+                                                data={{
+                                                    npv: marker.npv.toLocaleString(),
+                                                    pp: marker.paybackperiod,
+                                                    irr: (marker.irr * 100).toString().split('.')[0]
+                                                }
+                                                }
+
+                                            />
                                         )
                                     }
                                 </GoogleMapReact>
