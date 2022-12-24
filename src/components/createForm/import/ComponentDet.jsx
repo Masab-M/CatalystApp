@@ -15,6 +15,9 @@ export default function ComponentDet() {
     const { cAssump, setcAssump,select } = useContext(ComponentAssump)
     // Modal states and functions
     var tableData;
+    function padLeft(nr, n, str){
+        return Array(n-String(nr).length+1).join(str||'0')+nr;
+    }
     const [show, setShow] = useState(false);
     const [editRecord, seteditRecord] = useState(0);
     const handleClose = (e) => {
@@ -57,6 +60,7 @@ export default function ComponentDet() {
             setHeader(cAssump[select][0]);
         }
     }, [select])
+    console.log('cAssump',cAssump);
     return (
         <>
             <Modal show={show} onHide={handleClose}>
@@ -115,14 +119,15 @@ export default function ComponentDet() {
                                         <tbody>
                                             {
                                                 
-                                                cAssump[select].slice(1).map((val, index) =>
-                                                    <tr key={index}>
+                                                cAssump[select].slice(1).map((val, indexP) =>
+                                                    <tr key={indexP}>
                                                         <td>
                                                             <input type="checkbox" name="" id="" />
                                                         </td>
                                                         {
                                                             val.map((tdval, index) =>
-                                                                <td key={index}>{tdval}</td>
+                                                            index===0?
+                                                                <td key={index}>{header[0]==='property_id'?'X'+padLeft(indexP + 1,4):tdval}</td>:<td key={index}>{tdval}</td>
                                                             )
                                                         }
                                                         <td >

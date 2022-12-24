@@ -95,15 +95,19 @@ export default function ItemTable() {
             // down arrow
         }
     }
+    function padLeft(nr, n, str){
+        return Array(n-String(nr).length+1).join(str||'0')+nr;
+    }
     const columns = [
         {
             name: 'ID',
-            selector: (row, index) => index + 1,
+            selector: (row, index) =>index + 1 ,
             sortable: true,
         },
         {
             name: 'Property_ID',
-            selector: row => row.property_id,
+            // selector: row => row.property_id,
+            selector: (row, index) =>row.property_id===''?row.property_id:'X'+padLeft(index + 1,4),
             sortable: true,
         },
         {
